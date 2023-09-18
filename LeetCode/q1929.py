@@ -9,3 +9,10 @@ class Solution:
                 ans.append(n)
         return ans
 
+#  anothr solution in 1 line
+#    return nums*2
+
+# or 
+#    ans = []
+#    ans = nums + nums
+#return ans
