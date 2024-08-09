@@ -10,3 +10,16 @@ class Solution:
             for index2 in range(1, len(nums)):
                 if index1 != index2 and nums[index1] + nums[index2] == target:
                     return index1, index2
+                
+# Optimized Soulution using a map, which stores value and index of the complement 
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        # Initialize an empty dictionary to store numbers and their indices
+        map = {} # val : index
+        # Iterate over the list using both index (i) and value (num)
+        for index, num in enumerate(nums):
+            complement = target - num
+            if complement in map:
+                return [map[complement], index]
+             # If complement doesn't exist, store the current number and its index in the dictionary
+            map[num] = index
