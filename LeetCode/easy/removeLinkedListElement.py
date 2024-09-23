@@ -14,5 +14,6 @@ class Solution:
                 prev.next = cur.next
             else:
                 prev = cur
+            # shift curr
             cur = cur.next
         return dummy.next
