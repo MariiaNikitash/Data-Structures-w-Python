@@ -102,3 +102,44 @@ def calculate_gpa(report_card):
 report_card = {"Math": "A", "Science": "C", "History": "A", "Art": "B", "English": "B", "Spanish": "A"}
 print(calculate_gpa(report_card))
 #Example Output: 3.33
+
+def highest_rated(books):
+    if not books:
+        return None
+    highest = books[0]
+    for book in books[1:]:
+        if book['rating'] > highest['rating']:
+            highest = book
+    return highest
+
+books = [
+    {"title": "Tomorrow, and Tomorrow, and Tomorrow",
+     "author": "Gabrielle Zevin",
+     "rating": 4.18
+    },
+    {"title": "A Fortune For Your Disaster",
+     "author": "Hanif Abdurraqib",
+     "rating": 4.47
+    },
+    {"title": "The Seven Husbands of Evenlyn Hugo",
+     "author": "Taylor Jenkins Reid",
+     "rating": 4.40
+    }
+]
+#Expected Output:
+
+#{"title": "A Fortune For Your Disaster",
+#"author": "Hanif Abdurraqib",
+# "rating": 4.47
+#}
+#print(highest_rated(books))
+
+def index_to_value_map(lst):
+    dic = {}
+    for i, n in enumerate(lst):
+        dic[i] = n
+    return dic
+
+lst = ["apple", "banana", "cherry"]
+print(index_to_value_map(lst))
+#Example Output: {0: "apple", 1: "banana", 2: "cherry"}
