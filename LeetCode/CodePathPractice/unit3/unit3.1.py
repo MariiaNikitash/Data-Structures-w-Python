@@ -92,12 +92,59 @@ def min_distance(words, word1, word2):
 words = ["the", "quick", "brown", "fox", "jumped", "the"]
 dist1 = min_distance(words, "quick", "jumped")
 dist2 = min_distance(words, "the", "jumped")
-print(dist1)
-print(dist2)
+#print(dist1)
+#print(dist2)
 
 words2 = ["code", "path", "code", "contribute",  "practice"]
 dist3 = min_distance(words2, "code", "practice")
-print(dist3)
+#print(dist3)
+
+
+def match_made(dictionary):
+	for key, value in dictionary.items():
+		print( f"{key} and {value} are a perfect match.") # f-string - string interpolation
+        
+dic = {'Peanut' : 'Jelly',
+       'Spongebob': 'Patrick'}
+#print(match_made(dic))
+
+def remove_char(s, n):
+#return a string w nth char removed
+    return s[:n] + s[n+1:] 
+s = "typpo"
+fixed_s = remove_char(s, 2)
+#print(fixed_s) #typo
+
+
+def vowel_count(s):
+    vowels = "aeoyui"
+    count = 0
+    for c in s.lower():
+        if c in vowels:
+            count += 1
+    return count
+my_str = "hello world"
+my_str2 = "aAaAaAaAAA"
+my_str3 = "ths strng s mssng vwls"
+
+count1 = vowel_count(my_str)
+#print(count1)
+count2 = vowel_count(my_str2)
+#print(count2)
+count3 = vowel_count(my_str3)
+#print(count3)
+
+
+def reverse_sentence(sentence):
+    words = sentence.split(' ') # ['I', 'solemnly', 'swear', 'I', 'am', 'up', 'to', 'no', 'good']
+    reversed_list = words[::-1] # ['good', 'no', 'to', 'up', 'am', 'I', 'swear', 'solemnly', 'I']
+    rev_sent = ' '.join(reversed_list)
+    return rev_sent # good no to up am I swear solemnly I
+
+sentence = "I solemnly swear I am up to no good"
+print(reverse_sentence(sentence))
+#Example Input: sentence = "I solemnly swear I am up to no good"
+#Example Output: "good no to up am I swear solemnly I"
 
 
 
