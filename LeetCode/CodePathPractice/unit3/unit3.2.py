@@ -20,11 +20,28 @@ def remove_duplicates(nums):
         else:
             cur = nums[i]
             i += 1
-    return nums
-
-       
-
-      
+    return nums      
 nums = [1,1,1,2,3,4,4,5,6,6]
-print(remove_duplicates(nums))
+#print(remove_duplicates(nums))
 #no_dups = [1,2,3,4,5,6]
+
+
+def reverse_only_letters(s):
+    letter_list = []
+    for c in s:
+        if c.isalpha():
+            letter_list.append(c)
+    res = ''
+    letter_index = len(letter_list) - 1 # start from the end  
+
+    for c in s:
+        if c.isalpha():
+            res += letter_list[letter_index]
+            letter_index -= 1
+        else:
+            res += c
+    return res
+
+s = "a-bC-dEf-ghIj"
+reversed_s = reverse_only_letters(s)
+print(reversed_s) #j-Ih-gfE-dCba
