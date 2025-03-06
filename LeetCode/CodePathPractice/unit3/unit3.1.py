@@ -185,12 +185,30 @@ def compress_string(my_str):
 
 my_str = "aaaaabbcccd"
 compressed_Str = compress_string(my_str)
-print(compressed_Str) #a5b2c3d1
+#print(compressed_Str) #a5b2c3d1
 
 my_str2 = "abcde"
 compressed_Str2 = compress_string(my_str2)
-print(compressed_Str2) #abcde 
+#print(compressed_Str2) #abcde 
 # did not convert my_str2 because `a1b1c1d1e1` is double the length
+
+
+
+def find_the_needle(haystack, needle):
+   return haystack.find(needle) #Returns start index of the first occurrence of substring x in a given string. Returns -1 if x is not in the string.
+haystack = "tobeornottobe"
+needle = "be"
+print(find_the_needle(haystack, needle)) #2
+
+# OR
+
+
+haystack2 = "leetcode"
+needle2 = "leeto"
+print(find_the_needle(haystack2, needle2)) #-1
+
+
+
 
 
 

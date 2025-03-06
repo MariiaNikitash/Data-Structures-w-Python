@@ -1,3 +1,18 @@
+#Dictionaries
+
+# you can do:
+#for c in my_str:
+        #if c in dic:
+            #dic[c] += 1
+        #else:
+            #dic[c] = 1
+
+# OR
+
+#for c in my_str:
+        #dic[c] = dic.get(c, 0) + 1  # If 'c' is in dic, get its value, else default to 0
+    #return dic
+
 def is_subsequence(lst, sequence):
     seq_idx = 0
     for num in lst:
