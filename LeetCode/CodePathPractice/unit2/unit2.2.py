@@ -131,3 +131,18 @@ print(check2)
 #Example Output:
 #False
 #True
+
+#Problem 3,7 (not complete)
+
+#--------------------- Problem Set Version 2 -------------------------------------
+#                             (Below)
+
+
+
+
+
+
+
+
+#--------------------- Problem Set Version 3 -------------------------------------
+#                             (Below)

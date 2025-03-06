@@ -208,6 +208,8 @@ needle2 = "leeto"
 print(find_the_needle(haystack2, needle2)) #-1
 
 
+#--------------------- Problem Set Version 3 -------------------------------------
+#                            (Below)
 
 
 

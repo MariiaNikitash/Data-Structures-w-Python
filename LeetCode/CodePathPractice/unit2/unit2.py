@@ -158,3 +158,10 @@ def index_to_value_map(lst):
 lst = ["apple", "banana", "cherry"]
 print(index_to_value_map(lst))
 #Example Output: {0: "apple", 1: "banana", 2: "cherry"}
+
+#--------------------- Problem Set Version 2 -------------------------------------
+#                            (Below)
+
+
+#--------------------- Problem Set Version 3 -------------------------------------
+#                            (Below)
