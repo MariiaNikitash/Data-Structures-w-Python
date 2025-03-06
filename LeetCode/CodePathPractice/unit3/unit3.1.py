@@ -142,11 +142,55 @@ def reverse_sentence(sentence):
     return rev_sent # good no to up am I swear solemnly I
 
 sentence = "I solemnly swear I am up to no good"
-print(reverse_sentence(sentence))
+#print(reverse_sentence(sentence))
 #Example Input: sentence = "I solemnly swear I am up to no good"
 #Example Output: "good no to up am I swear solemnly I"
 
 
+# QUESTION FROM BLOOMBERG!!!
+def compress_strin(my_str):
+    dic = {}
+    for c in my_str:
+        if c in dic:
+            dic[c] += 1
+        else:
+            dic[c] = 1
+    ans = "".join(f"{c}{dic[c]}" for c in dic)
+
+    if len(ans) < len(my_str):
+        return ans
+    else:
+        return my_str
+## OR 
+
+def compress_string(my_str):
+    if not my_str:
+        return ""
+    res = ''
+    count = 1
+    cur = my_str[0]
+    for i in range(1, len(my_str)):
+        if my_str[i] == cur:
+            count += 1
+        else:
+            res += cur + str(count)
+            cur = my_str[i]
+            count = 1
+    res += cur + str(count) #After the loop ends, we still need to store the last character's count.
+
+
+    
+    return res if len(res) < len(my_str) else my_str
+    
+
+my_str = "aaaaabbcccd"
+compressed_Str = compress_string(my_str)
+print(compressed_Str) #a5b2c3d1
+
+my_str2 = "abcde"
+compressed_Str2 = compress_string(my_str2)
+print(compressed_Str2) #abcde 
+# did not convert my_str2 because `a1b1c1d1e1` is double the length
 
 
 
