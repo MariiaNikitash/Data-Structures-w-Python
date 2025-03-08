@@ -45,3 +45,32 @@ def reverse_only_letters(s):
 s = "a-bC-dEf-ghIj"
 reversed_s = reverse_only_letters(s)
 print(reversed_s) #j-Ih-gfE-dCba
+
+
+# Time O(n)
+# Space O(1) 
+def longest_uniform_substring(s):  
+    r = 0
+    l = 1
+    count = 1
+    max_count = 1
+    while l < len(s):
+        if s[r] == s[l]:
+            count += 1
+
+        else:
+            max_count = max(max_count, count)
+            count = 1
+            r = l
+        l += 1 
+    return max(max_count, count)
+
+
+
+s1 = "aabbbbCdAA"
+l1 = longest_uniform_substring(s1)
+print(l1) #4
+
+s2 = "abcdef"
+l2 = longest_uniform_substring(s2)
+print(l2) #1
