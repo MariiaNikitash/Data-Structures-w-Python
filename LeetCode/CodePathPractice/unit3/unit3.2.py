@@ -49,7 +49,9 @@ print(reversed_s) #j-Ih-gfE-dCba
 
 # Time O(n)
 # Space O(1) 
-def longest_uniform_substring(s):  
+def longest_uniform_substring(s):
+    if not s:
+        return 0 
     r = 0
     l = 1
     count = 1
