@@ -68,6 +68,21 @@ def longest_uniform_substring(s):
     return max(max_count, count)
 
 
+# OR 
+def longest_uniform_substring(s):
+    if not s:
+        return 0
+    max_length = 1
+    current_length = 1
+    for i in range(1, len(s)): 
+        if s[i] == s[i-1]: #compare i and i-1 and start iterating from 1 so we don't go ou of range
+            current_length += 1
+            max_length = max(max_length, current_length)
+        else:
+            current_length = 1
+    return max_length
+
+
 
 s1 = "aabbbbCdAA"
 l1 = longest_uniform_substring(s1)
