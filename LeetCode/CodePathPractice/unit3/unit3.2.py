@@ -44,7 +44,7 @@ def reverse_only_letters(s):
 
 s = "a-bC-dEf-ghIj"
 reversed_s = reverse_only_letters(s)
-print(reversed_s) #j-Ih-gfE-dCba
+#print(reversed_s) #j-Ih-gfE-dCba
 
 
 # Time O(n)
@@ -82,12 +82,19 @@ def longest_uniform_substring(s):
             current_length = 1
     return max_length
 
-
-
 s1 = "aabbbbCdAA"
 l1 = longest_uniform_substring(s1)
-print(l1) #4
-
+#print(l1) #4
 s2 = "abcdef"
 l2 = longest_uniform_substring(s2)
-print(l2) #1
+#print(l2) #1
+
+
+def find_poisoned_duration(time_series, duration):
+
+time_series = [1,4,9]
+damage = find_poisoned_duration(time_series, 3)
+print(damage) #8
+
+
+
