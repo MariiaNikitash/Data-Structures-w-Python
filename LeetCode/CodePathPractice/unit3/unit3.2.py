@@ -91,10 +91,41 @@ l2 = longest_uniform_substring(s2)
 
 
 def find_poisoned_duration(time_series, duration):
+    pass
+#NEED A SOLUTION
+#time_series = [1,4,9]
+#damage = find_poisoned_duration(time_series, 3)
+#print(damage) #8
 
-time_series = [1,4,9]
-damage = find_poisoned_duration(time_series, 3)
-print(damage) #8
+
+def sum_of_unique_elements(lst1, lst2):
+    count = 0
+    dic= {}
+    for num in lst1 + lst2:
+        if num in dic:
+            dic[num] += 1
+        else:
+            dic[num] = 1
+    # check if fequency of item in lst1 is equal to 1, then add to unique count
+    for num in lst1:
+        if dic[num] == 1:
+            count += num
+    return count
+lstA = [1, 2 ,3, 4] 
+lstB = [3, 4, 5, 6]
+lstC = [7, 7, 7, 7]
+
+sum1 = sum_of_unique_elements(lstA, lstB)
+print(sum1) #3
+
+sum2 = sum_of_unique_elements(lstC, lstB)
+print(sum2) #0
+
+#Problem #5 not complete
+#--------------------- Problem Set Version 2 -------------------------------------
+#     
 
 
 
+#--------------------- Problem Set Version 3 -------------------------------------
+#     
