@@ -24,4 +24,24 @@ def reverse_list(lst):
         r +=1
         l -=1
     return lst
-print(reverse_list([1, 2, 3, 4, 5])) #[5, 4, 3, 2, 1]
+#print(reverse_list([1, 2, 3, 4, 5])) #[5, 4, 3, 2, 1]
+
+
+def sort_array_by_parity(nums):
+    l, r = 0, len(nums) -1
+    while l < r:
+        if nums[l] % 2 == 0:
+            l+=1
+        elif nums[r] % 2 == 1:
+            r -= 1
+        else:
+            nums[l], nums[r] = nums[r], nums[l]
+            l += 1
+            r -= 1
+    return nums
+
+nums = [3,1,2,4]
+nums2 = [0]
+print(sort_array_by_parity(nums)) #[2,4,3,1]
+print(sort_array_by_parity(nums2)) #[0]
+# Additional acceptable outputs are [4,2,3,1], [2,4,1,3], and [4,2,1,3]
