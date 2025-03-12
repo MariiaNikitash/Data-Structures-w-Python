@@ -42,6 +42,35 @@ def sort_array_by_parity(nums):
 
 nums = [3,1,2,4]
 nums2 = [0]
-print(sort_array_by_parity(nums)) #[2,4,3,1]
-print(sort_array_by_parity(nums2)) #[0]
+#print(sort_array_by_parity(nums)) #[2,4,3,1]
+#print(sort_array_by_parity(nums2)) #[0]
 # Additional acceptable outputs are [4,2,3,1], [2,4,1,3], and [4,2,1,3]
+
+#Helper func
+def palindrome(s):
+    r, l = 0, len(s)-1
+    while r < l:
+        if s[r] != s[l]:
+            return False
+        r +=1
+        l -=1
+    return True
+#print(palindrome("raceca")) 
+def first_palindrome(words):
+    for word in words:
+        if palindrome(word):
+            return word
+    return ""
+            
+
+words = ["abc","car","ada","racecar","cool"]
+palindrome1 = first_palindrome(words)
+print(palindrome1) #ada
+
+words2 = ["abc","racecar","cool"]
+palindrome2 = first_palindrome(words2)
+print(palindrome2) #racecar
+
+words3 = ["abc", "def", "ghi"]
+palindrome3 = first_palindrome(words3)
+print(palindrome3) #''
