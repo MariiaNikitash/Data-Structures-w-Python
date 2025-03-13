@@ -65,12 +65,31 @@ def first_palindrome(words):
 
 words = ["abc","car","ada","racecar","cool"]
 palindrome1 = first_palindrome(words)
-print(palindrome1) #ada
+#print(palindrome1) #ada
 
 words2 = ["abc","racecar","cool"]
 palindrome2 = first_palindrome(words2)
-print(palindrome2) #racecar
+#print(palindrome2) #racecar
 
 words3 = ["abc", "def", "ghi"]
 palindrome3 = first_palindrome(words3)
-print(palindrome3) #''
+#print(palindrome3) #''
+
+# In O(n) memory
+def remove_duplicates(nums):
+    if not nums:
+        return 0
+    j = 1
+    for i in range(1, len(nums)):
+        if nums[i] != nums[i-1]:
+            nums[j] = nums[i]
+            j += 1
+    # Slice all nums that are not unique in the back
+    nums[:] = nums[:j]
+
+            
+    return j  # The new length after removing duplicates
+
+nums = [1,1,2,3,4,4,4,5]
+print(remove_duplicates(nums))
+print(nums) # same list #5
