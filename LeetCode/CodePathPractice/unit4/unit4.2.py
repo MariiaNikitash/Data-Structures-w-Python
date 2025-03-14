@@ -32,3 +32,12 @@ print(is_long_pressed(name2, typed2)) #False bc there's 2 e's in saeed
 name3 = "courtney"
 typed3 = "courtney"
 print(is_long_pressed(name3, typed3)) #True
+
+# Continue Problems from Set 1 when they appear on the site
+
+#--------------------- Problem Set Version 2 -------------------------------------
+#                            (Below)
+
+
+#--------------------- Problem Set Version 3 -------------------------------------
+#                            (Below)
