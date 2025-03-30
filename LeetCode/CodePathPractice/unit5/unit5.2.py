@@ -182,4 +182,4 @@ def ll_insert(head, val, i):
 ll_insert(head, 20, 2)
 
 # result linked list: 3 -> 8 -> 20 -> 12 -> 9
-#
+# #
