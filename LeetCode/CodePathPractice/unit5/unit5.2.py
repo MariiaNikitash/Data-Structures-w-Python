@@ -223,5 +223,26 @@ poliwhirl.next = poliwrath
 
 poliwrath.prev = poliwhirl
 poliwhirl.prev = poliwag
-print(poliwhirl.prev.value, "<->", poliwhirl.value, "<->", poliwhirl.next.value)
+#print(poliwhirl.prev.value, "<->", poliwhirl.value, "<->", poliwhirl.next.value)
 #Poliwag <-> Poliwhirl <-> Poliwrath
+
+#10
+class Node:
+	def __init__(self, value, next = None, prev = None):
+		self.value = value
+		self.next = next
+		self.prev = prev
+		
+def print_reverse(tail):
+	cur = tail
+	while cur:
+		if cur.prev:
+			print(cur.value, end=" ")
+		else:
+			print(cur.value)
+		cur = cur.prev
+
+#              (head)                       (tail)
+# Linked List: Poliwag <-> Poliwhirl <-> Poliwrath
+print_reverse(poliwrath)
+#Poliwrath Poliwhirl Poliwag
