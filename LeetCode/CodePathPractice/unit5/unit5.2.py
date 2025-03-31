@@ -138,13 +138,13 @@ def listify_first_n(head, n):
     # Return the list of collected values
     return values
 # linked list: a -> b -> c
-head = a
-lst = listify_first_n(head,2)
+#head = a
+#lst = listify_first_n(head,2)
 #print(lst)
 
 # linked list: j -> k -> l 
-head2 = j
-lst2 = listify_first_n(head2,5)
+#head2 = j
+#lst2 = listify_first_n(head2,5)
 #print(lst2)
 #[`a`, `b`]
 #[`j`, `k`, `l`]
@@ -204,7 +204,24 @@ def list_to_linked_list(lst):
 normal_list = ["Betty", "Veronica", "Archie", "Jughead"]
 linked_list = list_to_linked_list(normal_list)
 print(linked_list) # Only prints the head element!
+# Linked list : Betty -> Veronica -> Archie -> Jughead
 
 
-Betty # Linked list : Betty -> Veronica -> Archie -> Jughead
+# 9
+class Node:
+	def __init__(self, value, next = None, prev = None):
+		self.value = value
+		self.next = next
+		self.prev = prev
 
+poliwag = Node('Poliwag')
+poliwhirl = Node('Poliwhirl')
+poliwrath = Node('Poliwrath')
+
+poliwag.next = poliwhirl
+poliwhirl.next = poliwrath
+
+poliwrath.prev = poliwhirl
+poliwhirl.prev = poliwag
+print(poliwhirl.prev.value, "<->", poliwhirl.value, "<->", poliwhirl.next.value)
+#Poliwag <-> Poliwhirl <-> Poliwrath
