@@ -183,3 +183,28 @@ ll_insert(head, 20, 2)
 
 # result linked list: 3 -> 8 -> 20 -> 12 -> 9
 # #
+
+#8 Linked Listify
+class Node:
+	def __init__(self, value, next=None):
+		self.value = value
+		self.next = next
+		
+def list_to_linked_list(lst):
+	if not lst:
+		return None
+	head = Node(lst[0])
+	current = head
+	for value in lst[1:]:
+		current.next = Node(value)
+		current = current.next
+	return head
+
+
+normal_list = ["Betty", "Veronica", "Archie", "Jughead"]
+linked_list = list_to_linked_list(normal_list)
+print(linked_list) # Only prints the head element!
+
+
+Betty # Linked list : Betty -> Veronica -> Archie -> Jughead
+
