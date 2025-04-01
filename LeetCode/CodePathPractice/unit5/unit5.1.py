@@ -145,3 +145,11 @@ c.next = d
 d.next = e
 # input linked list: a->b->c->d->e
 print_linked_list(a)
+
+
+#--------------------- Problem Set Version 2 -------------------------------------
+#                            (Below)
+
+
+#--------------------- Problem Set Version 3 -------------------------------------
+#                            (Below)
