@@ -59,27 +59,54 @@ def print_list(node):
 
 def remove_tail(head):
     if head is None:
-        print("List is empty. No tail to remove.")
+        #print("List is empty. No tail to remove.")
         return None
     if head.next is None:
-        print("Only one node in the list. Removing the node.")
+        #print("Only one node in the list. Removing the node.")
         return None
 
     current = head
     while current.next.next:  # Stop at the second-to-last node
-        print(f"Current Node: {current.value} -> Next Node: {current.next.value}")
+        #print(f"Current Node: {current.value} -> Next Node: {current.next.value}")
         current = current.next
-    print(f"Removing tail node with value: {current.next.value}")
+    #print(f"Removing tail node with value: {current.next.value}")
     current.next = None
     return head
 
 
 head = Node(1, Node(2, Node(3, Node(4))))
 
-print("Original List:")
-print_list(head)  # Print the original list
+#print("Original List:")
+#print_list(head)  # Print the original list
 
 head = remove_tail(head)  # Remove the tail node
 
-print("List after removing tail:")
-print_list(head)  # Print the modified list
+#print("List after removing tail:")
+#print_list(head)  # Print the modified list
+
+# Find Middle
+
+class Node:
+   def __init__(self, value, next=None):
+       self.value = value
+       self.next = next
+
+def find_middle_element(head):
+    if not head:
+        return False
+    fast = head
+    slow = head
+
+    while fast and fast.next: 
+        slow = slow.next         
+        fast = fast.next.next
+    return slow.value
+
+# works for even and odd since when (for even) fast.next is None we still increment slow an return it
+# for even since we reach the last node and we cant increment fast by 2 we return slow without increment
+head = Node(1, Node(2, Node(3, Node(4))))
+print(find_middle_element(head))
+# Input List:
+# 1 -> 2 -> 3
+# Input: head = 1
+# Expected Return Value: 2
