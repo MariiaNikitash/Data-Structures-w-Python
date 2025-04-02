@@ -130,8 +130,23 @@ def is_palindrome(head):
     while fast and fast.next: 
         slow = slow.next         
         fast = fast.next.next
+ # Reverse the second half of the list
+    prev = None
+    while slow:
+        next_node = slow.next
+        slow.next = prev
+        prev = slow
+        slow = next_node
     
-#  COMPLETE!!!
+    # Compare the first half and the reversed second half
+    left, right = head, prev
+    while right:  # Only need to compare till the end of the second half
+        if left.value != right.value:
+            return False
+        left = left.next
+        right = right.next
+    
+    return True
 # Input List:
 # 1 -> 2 -> 1
 # Input: head = 1
