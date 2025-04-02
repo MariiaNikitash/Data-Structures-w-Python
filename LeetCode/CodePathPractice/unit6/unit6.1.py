@@ -84,7 +84,7 @@ head = remove_tail(head)  # Remove the tail node
 #print("List after removing tail:")
 #print_list(head)  # Print the modified list
 
-# Find Middle
+# 4. Find Middle
 
 class Node:
    def __init__(self, value, next=None):
@@ -105,8 +105,37 @@ def find_middle_element(head):
 # works for even and odd since when (for even) fast.next is None we still increment slow an return it
 # for even since we reach the last node and we cant increment fast by 2 we return slow without increment
 head = Node(1, Node(2, Node(3, Node(4))))
-print(find_middle_element(head))
+#print(find_middle_element(head))
 # Input List:
 # 1 -> 2 -> 3
 # Input: head = 1
 # Expected Return Value: 2
+
+
+# 5. Is Palindrome
+# Task: Given the head of a singly linked list, return True if the values of 
+# linked list are palindromic and False otherwise. Use the two-pointer technique in your solution.
+
+class Node:
+   def __init__(self, value, next=None):
+       self.value = value
+       self.next = next
+
+def is_palindrome(head):
+    if not head:
+        return False
+    fast = head
+    slow = head
+
+    while fast and fast.next: 
+        slow = slow.next         
+        fast = fast.next.next
+    
+#  COMPLETE!!!
+# Input List:
+# 1 -> 2 -> 1
+# Input: head = 1
+
+# True
+
+# 6. Put in Reverse
