@@ -57,19 +57,29 @@ def print_list(node):
     print()
 
 
-# I have a bug! 
 def remove_tail(head):
-    if head is None: # If the list is empty, return None
+    if head is None:
+        print("List is empty. No tail to remove.")
         return None
-    if head.next is None: # If there's only one node, removing it leaves the list empty
-        return None 
-		
-	# Start from the head and find the second-to-last node
-    current = head
-    while current.next: 
-        current = current.next
+    if head.next is None:
+        print("Only one node in the list. Removing the node.")
+        return None
 
-    current.next = None # Remove the last node by setting second-to-last node to None
+    current = head
+    while current.next.next:  # Stop at the second-to-last node
+        print(f"Current Node: {current.value} -> Next Node: {current.next.value}")
+        current = current.next
+    print(f"Removing tail node with value: {current.next.value}")
+    current.next = None
     return head
 
-#
+
+head = Node(1, Node(2, Node(3, Node(4))))
+
+print("Original List:")
+print_list(head)  # Print the original list
+
+head = remove_tail(head)  # Remove the tail node
+
+print("List after removing tail:")
+print_list(head)  # Print the modified list
