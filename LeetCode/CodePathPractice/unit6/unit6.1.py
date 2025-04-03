@@ -154,3 +154,33 @@ def is_palindrome(head):
 # True
 
 # 6. Put in Reverse
+# Task: Given the head of a singly linked list, reverse list, and return
+# reversed list. You must reverse list in place. Return the head of reversed list.
+
+class Node:
+   def __init__(self, value, next=None):
+       self.value = value
+       self.next = next
+
+def reverse(head):
+    if head is None:
+         return None
+    prev = None 
+    cur = head
+    while cur:
+        next_node = cur.next 
+        cur.next = prev # reverse the link
+        prev = cur # move pointer 1 pos forward
+        cur = next_node # # move pointer 1 pos forward
+        print(prev.value, end="->")
+    print("None")
+    return prev
+head = Node(1, Node(2, Node(3, Node(4))))
+# Input List: 1 -> 2 -> 3 -> 4
+# Input: head = 1
+
+# Expected Return Value: 4
+# Expected Result List: 4 -> 3 -> 2 -> 1
+
+
+
