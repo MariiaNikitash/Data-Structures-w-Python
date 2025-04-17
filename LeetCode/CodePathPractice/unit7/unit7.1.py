@@ -2,10 +2,12 @@
 
 def repeat_hello(n):
 	if n > 0:
-		print("Hello")
+		print("Hello", n)
+    
 		repeat_hello(n - 1)
 		
 repeat_hello(5)
+
 
 
 def count_recursive(num):
