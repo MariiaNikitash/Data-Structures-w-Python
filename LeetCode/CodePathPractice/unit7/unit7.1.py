@@ -40,7 +40,7 @@ def sum_list(lst):
     print(lst[1:])
     return lst[0] + sum_list(lst[1:])
 
-print(sum_list([1, 2, 3, 4]))
+#print(sum_list([1, 2, 3, 4]))
 
 # The recursive calls stack up the additions, and they
 # don’t happen all at once. The function keeps calling itself until it
@@ -48,5 +48,12 @@ print(sum_list([1, 2, 3, 4]))
 
 # Problem 4: Recursive Power of 2
 def is_power_of_two(n):
-	pass
+    if n == 1:
+        return True
+    if n <= 0 or n % 2 != 0:
+        return False
+    return is_power_of_two(n // 2)
+
+print(is_power_of_two(5))
+print(is_power_of_two(8))
 
