@@ -47,6 +47,9 @@ def sum_list(lst):
 # reaches the base case ([]), then starts adding the results back together.
 
 # Problem 4: Recursive Power of 2
+# Time Complexity: O(log n) because each recursive call reduces the problem size by half.
+#Space Complexity: O(log n) due to the recursion stack depth, also reducing by half each time.
+
 def is_power_of_two(n):
     if n == 1:
         return True
@@ -54,6 +57,50 @@ def is_power_of_two(n):
         return False
     return is_power_of_two(n // 2)
 
-print(is_power_of_two(5))
-print(is_power_of_two(8))
+#print(is_power_of_two(5))
+#print(is_power_of_two(8))
 
+# Problem 5: Binary Search 1
+def binary_search(lst, target):
+	# Initialize a left pointer to the 0th index in the list
+    left = 0
+	# Initialize a right pointer to the last index in the list
+    right = len(lst) - 1 
+	# While left pointer is less than right pointer:
+    while left < right: 
+        mid = (left + right) // 2
+        if lst[mid] == target:
+             return mid
+        elif lst[mid] > target:
+             right = mid -1
+        else:
+             left = mid + 1
+    return -1
+
+lst = [1, 3, 5, 7, 9, 11, 13, 15]
+target = 11
+#print(binary_search(lst, target))
+# Expected Output: 5
+# Explanation: 11 has index 5 in the list
+
+# Problem 6:
+def find_last(lst, target):
+    left = 0
+    right = len(lst) -1
+    res = -1
+    while left < right: 
+        mid = (left + right) // 2
+        if lst[mid] == target:
+            res = mid
+            left = mid + 1
+        elif lst[mid] > target:
+             right = mid -1
+        else:
+             left = mid + 1
+    return res
+
+lst = [1, 3, 5, 7, 9, 11, 11, 13, 15]
+target = 11
+print(find_last(lst, target))
+# Expected Output: 6
+# Explanation: The second (last) occurrence of 11 has index 6 in the list
