@@ -101,6 +101,28 @@ def find_last(lst, target):
 
 lst = [1, 3, 5, 7, 9, 11, 11, 13, 15]
 target = 11
-print(find_last(lst, target))
+#print(find_last(lst, target))
 # Expected Output: 6
 # Explanation: The second (last) occurrence of 11 has index 6 in the list
+
+
+# Problem 7
+def find_floor(lst, x):
+    low, high = 0, len(lst)-1
+    floor = None
+    while low <= high:
+        mid = (low + high) // 2
+        if lst[mid] <= x:
+            floor = lst[mid]    # store this value, it's valid
+            low = mid + 1       # go right for a better (closer to x) one
+        else:
+            high = mid - 1
+    return floor
+
+lst = [1, 2, 8, 10, 11, 12, 19]
+x = 5
+#print(find_floor(lst, x))
+
+
+# Expected Output: 1
+# 2 is the largest element in the list that is less than or equal to 5. 2 has index 1 in the list.
