@@ -44,5 +44,11 @@ def count_ones(lst):
         print(f"No 1s found.")
         return 0
 lst = [0, 0, 0, 0, 1, 1, 1]
-print(count_ones(lst))
+#print(count_ones(lst))
 # Expected Output: 3
+
+#REcursive Binary Search
+def binary_search(nums, target):
+    if not target:
+         return -1
+    if 
