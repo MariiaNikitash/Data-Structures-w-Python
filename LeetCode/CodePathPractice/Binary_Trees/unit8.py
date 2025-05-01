@@ -1,5 +1,20 @@
 # Binary Trees
 
+# Inorder: Left → Node → Right
+# inorder(node.left)
+# res.append(node.val)
+# inorder(node.right)
+# 
+# # Preorder: Node → Left → Right
+# res.append(node.val)
+# inorder(node.left)
+# inorder(node.right)
+# 
+# # Postorder: Left → Right → Node
+# inorder(node.left)
+# inorder(node.right)
+# res.append(node.val)
+
 # Problem 1: Build a Binary Tree I
 
 class TreeNode:
@@ -80,6 +95,8 @@ def left_most(root):
         return root.val
     return left_most(root.left)
 
+# Time: O(n)
+# Space: O(1)
 
 # Problem 5: Find Leftmost Node II
 # implement iteratively
@@ -98,3 +115,38 @@ def left_most(root):
         current = root.left
     return current.val
         
+# Time: O(n)
+# Space: O(1)
+
+
+# Problem 6: In-order Traversal
+class TreeNode():
+     def __init__(self, val, left=None, right=None):
+         self.val = val
+         self.left = left
+         self.right = right
+
+def inorder_traversal(root):
+    if not root:
+        return []
+    return inorder_traversal(root.left) + [root.val] + inorder_traversal(root.right)
+
+root = TreeNode(2, TreeNode(1), TreeNode(3))
+print(inorder_traversal(root))
+
+# OR
+def inorder_traversal(root):
+    res = []
+    def inorder(root):
+        if not root:
+            return []
+        inorder(root.left)
+        res.append(root.val)
+        inorder(root.right)
+    
+    inorder(root)    
+    return res
+        
+print(inorder_traversal(root))
+
+
