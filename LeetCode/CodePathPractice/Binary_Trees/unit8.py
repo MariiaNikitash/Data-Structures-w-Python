@@ -132,7 +132,9 @@ def inorder_traversal(root):
     return inorder_traversal(root.left) + [root.val] + inorder_traversal(root.right)
 
 root = TreeNode(2, TreeNode(1), TreeNode(3))
-print(inorder_traversal(root))
+#print(inorder_traversal(root))
+# Time: O(n^2) bc of list concatination
+# Space: O(n)
 
 # OR
 def inorder_traversal(root):
@@ -147,6 +149,24 @@ def inorder_traversal(root):
     inorder(root)    
     return res
         
+#print(inorder_traversal(root))
+# Time: O(n)
+# Space: O(n)
+
+
+# OR
+# Iteratively
+def inorder_traversal(root):
+    res = []
+    stack = []
+    cur = root
+    while cur or stack:
+        while cur:
+            stack.append(cur)
+            cur = cur.left
+        cur = stack.pop()
+        res.append(cur.val)
+        cur = cur.right
+    return res
+
 print(inorder_traversal(root))
-
-
