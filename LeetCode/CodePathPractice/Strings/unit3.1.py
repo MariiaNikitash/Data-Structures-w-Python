@@ -193,6 +193,25 @@ compressed_Str2 = compress_string(my_str2)
 # did not convert my_str2 because `a1b1c1d1e1` is double the length
 
 
+# 1Q from Bloomberg 
+# input: "AAABBCCB", k=3
+# output: "CC"
+
+def string(s, k):
+    dic = {}
+    for c in s:
+        if c in dic:
+            dic[c] += 1
+        else:
+            dic[c] = 1
+    result = ''
+    for c in s:
+        if dic[c] != k:
+            result += c
+    return result
+
+print(string("AAABBCCB", 3))
+
 
 def find_the_needle(haystack, needle):
    return haystack.find(needle) #Returns start index of the first occurrence of substring x in a given string. Returns -1 if x is not in the string.

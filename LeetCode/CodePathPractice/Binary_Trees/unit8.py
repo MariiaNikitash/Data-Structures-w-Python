@@ -62,3 +62,39 @@ def check_tree(root):
     return root.val == sum
 
 
+# Problem 4: Find Leftmost Node I
+
+# Given the root of a binary tree, write a function
+# that finds the value of the left most node in the tree.
+
+class TreeNode1:
+    def __init__(self, val, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+def left_most(root):
+    if not root:
+        return None
+    if not root.left:
+        return root.val
+    return left_most(root.left)
+
+
+# Problem 5: Find Leftmost Node II
+# implement iteratively
+
+class TreeNode:
+    def __init__(self, val, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+def left_most(root):
+    if not root:
+        return None
+    current = root # in case root is the left most 
+    while root.left:
+        current = root.left
+    return current.val
+        
