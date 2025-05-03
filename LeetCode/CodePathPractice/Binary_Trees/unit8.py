@@ -169,4 +169,24 @@ def inorder_traversal(root):
         cur = cur.right
     return res
 
-print(inorder_traversal(root))
+#print(inorder_traversal(root))
+
+
+
+# Problem 7: BI=inary Tree Size
+class TreeNode():
+     def __init__(self, val, left=None, right=None):
+         self.val = val
+         self.left = left
+         self.right = right
+   
+def size(root):
+    if not root:
+        return 0
+    return 1 + size(root.left) + size(root.right) 
+
+# Time: O(n)  Each node is processed once
+# Space: O(h)  Each recursive call adds a new stack frame to the call stack
+            # The maximum depth of the call stack is the height of the tree (h)
+
+
