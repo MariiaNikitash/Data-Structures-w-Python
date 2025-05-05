@@ -15,7 +15,8 @@
 # inorder(node.right)
 # res.append(node.val)
 
-# Problem 1: Build a Binary Tree I
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+# PROBLEM 1: Build a Binary Tree I
 
 class TreeNode:
     def __init__(self, val, left=None, right=None):
@@ -32,7 +33,8 @@ root = TreeNode(10)
 root.left = TreeNode(4)
 root.right = TreeNode(6)
 
-# Problem 2: 3-Node Sum I
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+# PROBLEM 2: 3-Node Sum I
 # tree has exactly 3 nodes: root, left, right
 class TreeNode:
     def __init__(self, val, left=None, right=None):
@@ -45,7 +47,8 @@ def check_tree(root):
         return True
     return False
 
-# Problem 3: 3-Node Sum II
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+# PROBLEM 3: 3-Node Sum II
 # tree has at most 3 nodes: root, left, right
 class TreeNode:
     def __init__(self, val, left=None, right=None):
@@ -76,8 +79,8 @@ def check_tree(root):
     sum = left_c + right_c
     return root.val == sum
 
-
-# Problem 4: Find Leftmost Node I
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+# PROBLEM 4: Find Leftmost Node I
 
 # Given the root of a binary tree, write a function
 # that finds the value of the left most node in the tree.
@@ -98,6 +101,7 @@ def left_most(root):
 # Time: O(n)
 # Space: O(1)
 
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
 # Problem 5: Find Leftmost Node II
 # implement iteratively
 
@@ -118,8 +122,8 @@ def left_most(root):
 # Time: O(n)
 # Space: O(1)
 
-
-# Problem 6: In-order Traversal
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+# PROBLEM 6: In-order Traversal
 class TreeNode():
      def __init__(self, val, left=None, right=None):
          self.val = val
@@ -172,8 +176,8 @@ def inorder_traversal(root):
 #print(inorder_traversal(root))
 
 
-
-# Problem 7: BI=inary Tree Size
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+# PROBLEM 7: BI=inary Tree Size
 class TreeNode():
      def __init__(self, val, left=None, right=None):
          self.val = val
@@ -210,7 +214,25 @@ def size(root):
 # Time: O(n) 
 # Space: O(h), 'h' means depends on height, Best case(balanced tree) -> O(log n)
 
-#Problem 8: Binary Tree Find
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+#PROBLEM 8: Binary Tree Find
+class TreeNode():
+     def __init__(self, val, left=None, right=None):
+         self.val = val
+         self.left = left
+         self.right = right
+   
+def find(root, value):
+    if not root:
+        return False
+    if root.val == value:
+        return True
+    return find(root.left, value) or find(root.right, value)
+# Time: O(n) 
+# Space: O(h), 'h' means depends on height, Best case(balanced tree) -> O(log n)
+
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+#PROBLEM 9: Binary Search Tree Find
 class TreeNode():
      def __init__(self, val, left=None, right=None):
          self.val = val
@@ -230,7 +252,9 @@ def find(root, value):
 
 root = TreeNode(2, TreeNode(1), TreeNode(3))
 
-print(find(root, 3))
+#print(find(root, 3))
+# Time: O(log n) on avarage 
+# Space: O(log n) due to the recursion depth, which is the height of the tree in the balanced case.
 
 # Iteravly if we want to avoid recursion or tree is deep or tree is unbalanced
     
@@ -249,3 +273,27 @@ def find(root, value):
         else:
             stack.append(node.right)
     return False
+
+
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+#PROBLEM 10: BST Descending Leaves
+class TreeNode():
+     def __init__(self, val, left=None, right=None):
+         self.val = val
+         self.left = left
+         self.right = right
+   
+def descending_leaves(root):
+    leaves = []
+
+    def dfs(node):
+        if not node:
+            return 
+        dfs(node.right)
+        dfs(node.left)
+        if not node.right and not node.left:
+            leaves.append(node.val)
+            
+    dfs(root)
+    return leaves
+    
