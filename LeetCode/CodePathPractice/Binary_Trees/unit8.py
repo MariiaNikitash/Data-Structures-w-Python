@@ -188,5 +188,64 @@ def size(root):
 # Time: O(n)  Each node is processed once
 # Space: O(h)  Each recursive call adds a new stack frame to the call stack
             # The maximum depth of the call stack is the height of the tree (h)
+#if the tree is balanced, the height h will be log₂(n), leading to a space complexity of O(log(n)).
 
+# Iteratively also DFS
+# most common;y so;ved with stack 
+def size(root):
+    if not root:
+        return 0
+    stack = [root]
+    count = 0
+    while stack:
+        node = stack.pop()
+        count +=1
+        
+        if node.right:
+            stack.append(node.right)
+        if node.left:
+            stack.append(node.left)
+    return count 
 
+# Time: O(n) 
+# Space: O(h), 'h' means depends on height, Best case(balanced tree) -> O(log n)
+
+#Problem 8: Binary Tree Find
+class TreeNode():
+     def __init__(self, val, left=None, right=None):
+         self.val = val
+         self.left = left
+         self.right = right
+   
+def find(root, value):
+    if not root:
+        return False
+    if root.val == value:
+        return True
+    
+    if root.val > value:
+        return find(root.left, value)
+    else:
+        return find(root.right, value)
+
+root = TreeNode(2, TreeNode(1), TreeNode(3))
+
+print(find(root, 3))
+
+# Iteravly if we want to avoid recursion or tree is deep or tree is unbalanced
+    
+def find(root, value):
+    if not root:
+        return False
+    
+    stack = [root]
+    while stack:
+        node = stack.pop()
+        if node.val == value:
+            return True
+        
+        if node.val > value:
+            stack.append(node.left)
+        else:
+            stack.append(node.right)
+    return False
