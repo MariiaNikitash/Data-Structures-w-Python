@@ -438,7 +438,7 @@ def postorder_traversal(root):
 # write a function that returns the product of all nodes’ values in a binary tree.
 class TreeNode():
      def __init__(self, value, left=None, right=None):
-         self.val = val
+         self.val = value
          self.left = left
          self.right = right
    
@@ -447,5 +447,20 @@ def product_tree(root):
         return 1
     return root.val * product_tree(root.left) * product_tree(root.right)
 
+# so for 
+#      4
+#     / \
+#    /   \
+#   2     5
+#  / \    
+# 1   3    
+
+# we have product_tree(1) → 1
+# product_tree(3) → 3
+# product_tree(2) → 2 * 1 * 3 = 6
+# product_tree(5) → 5
+# product_tree(4) → 4 * 6 * 5 = 120
 # Time  O(n)
 # #Space: O(h)
+root = TreeNode(4, TreeNode(2, TreeNode(1), TreeNode(3)), TreeNode(5))
+print(product_tree(root))
