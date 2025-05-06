@@ -433,3 +433,19 @@ def postorder_traversal(root):
     return stack[::-1] # REverse to get postorder
 # Time/Space: O(n) although reversing a stack takes up O(n) space/time itself
 
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+# PROBLEM 7: Binary Tree Product
+# write a function that returns the product of all nodes’ values in a binary tree.
+class TreeNode():
+     def __init__(self, value, left=None, right=None):
+         self.val = val
+         self.left = left
+         self.right = right
+   
+def product_tree(root):
+    if not root:
+        return 1
+    return root.val * product_tree(root.left) * product_tree(root.right)
+
+# Time  O(n)
+# #Space: O(h)
