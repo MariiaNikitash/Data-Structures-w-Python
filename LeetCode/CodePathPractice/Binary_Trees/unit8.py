@@ -50,6 +50,8 @@ def check_tree(root):
 #----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
 # PROBLEM 3: 3-Node Sum II
 # tree has at most 3 nodes: root, left, right
+#  return True if the value of the root is equal to the sum of the values of its two children. Return False otherwise.
+
 class TreeNode:
     def __init__(self, val, left=None, right=None):
         self.val = val
@@ -124,6 +126,8 @@ def left_most(root):
 
 #----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
 # PROBLEM 6: In-order Traversal
+# return a list representing the inorder traversal of its nodes' values
+
 class TreeNode():
      def __init__(self, val, left=None, right=None):
          self.val = val
@@ -143,12 +147,12 @@ root = TreeNode(2, TreeNode(1), TreeNode(3))
 # OR
 def inorder_traversal(root):
     res = []
-    def inorder(root):
-        if not root:
+    def inorder(node):
+        if not node:
             return []
-        inorder(root.left)
-        res.append(root.val)
-        inorder(root.right)
+        inorder(node.left)
+        res.append(node.val)
+        inorder(node.right)
     
     inorder(root)    
     return res
@@ -177,7 +181,9 @@ def inorder_traversal(root):
 
 
 #----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
-# PROBLEM 7: BI=inary Tree Size
+# PROBLEM 7: Binnary Tree Size
+# return number of nodes in the binary tree.
+
 class TreeNode():
      def __init__(self, val, left=None, right=None):
          self.val = val
@@ -233,6 +239,9 @@ def find(root, value):
 
 #----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
 #PROBLEM 9: Binary Search Tree Find
+# returns True if there is a node with the given value in the tree.
+# Assume the tree is balanced.
+
 class TreeNode():
      def __init__(self, val, left=None, right=None):
          self.val = val
@@ -277,6 +286,8 @@ def find(root, value):
 
 #----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
 #PROBLEM 10: BST Descending Leaves
+# returns a list of the values of all leaves in the BST in descending order
+# Assume the tree is balanced.
 class TreeNode():
      def __init__(self, val, left=None, right=None):
          self.val = val
@@ -293,7 +304,132 @@ def descending_leaves(root):
         dfs(node.left)
         if not node.right and not node.left:
             leaves.append(node.val)
-            
+
     dfs(root)
     return leaves
     
+
+#-------------------------------- Problem Set Version 2 -----------------------------------------------
+
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+# PROBLEM 1:
+class TreeNode:
+    def __init__(self, value, left=None, right=None):
+        self.val = value
+        self.left = left
+        self.right = right
+
+root = TreeNode(10, TreeNode(2),TreeNode(5))
+#print(root.val, root.left.val, root.right.val)
+
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+# PROBLEM 2: 3-Node Product I (has exactly 3 nodes)
+# return T if product of left * right = root
+
+class TreeNode:
+    def __init__(self, value, left=None, right=None):
+        self.val = value
+        self.left = left
+        self.right = right
+
+def check_tree(root):
+    if not root:
+        return False
+    return root.val == root.left.val * root.right.val
+#print(check_tree(root))
+# Time/Space: O(1)
+
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+# PROBLEM 3: 3-Node Product I (has at most 3 nodes)
+class TreeNode:
+    def __init__(self, value, left=None, right=None):
+        self.val = value
+        self.left = left
+        self.right = right
+
+def check_tree(root):
+    if not root:
+        return False
+    l,r = 1,1
+    if root.left:
+        l = root.left.val
+    if root.right:
+        r = root.right.val
+    return root.val == l * r
+#print(check_tree(root))
+
+
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+# PROBLEM 4: Find Rightmost Node I
+# Given root of binary tree, write func that finds value of right most node in the tree.
+
+class TreeNode:
+    def __init__(self, value, left=None, right=None):
+        self.val = value
+        self.left = left
+        self.right = right
+
+def right_most(root):
+    if not root:
+        return 
+    if not root.right:
+        return root.val
+    return right_most(root.right)
+
+#print(right_most(root))
+
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+# PROBLEM 5: Find Rightmost Node II
+# Iteratively
+def right_most(root):
+    if not root:
+        return 
+    current = root
+    while current.right:
+        current = current.right
+    return current.val
+#print(right_most(root))
+
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+# PROBLEM 6: Post-order Traversal
+# Given the root of a binary tree, return a list representing the postorder traversal
+class TreeNode():
+     def __init__(self, value, left=None, right=None):
+         self.val = value
+         self.left = left
+         self.right = right
+
+def postorder_traversal(root):
+    result = []
+    def postorder(node):
+        if not node:
+            return
+        postorder(node.left)
+        postorder(node.right)
+        result.append(node.val)
+
+    postorder(root)
+    return result
+
+# Time/Space: O(n)
+
+# Iteratively
+def postorder_traversal(root):
+    if not root:
+        return []
+    
+    result = []
+    stack = [root]
+    while stack:
+        node = stack.pop()
+        result.append(node.val)
+
+        if node.left:
+            stack.append(node.left)
+        if node.right:
+            stack.append(node.right)
+
+
+    return stack[::-1] # REverse to get postorder
+# Time/Space: O(n) although reversing a stack takes up O(n) space/time itself
+
