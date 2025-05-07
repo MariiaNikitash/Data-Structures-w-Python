@@ -319,7 +319,7 @@ class TreeNode:
         self.left = left
         self.right = right
 
-root = TreeNode(10, TreeNode(2),TreeNode(5))
+#root = TreeNode(10, TreeNode(2),TreeNode(5))
 #print(root.val, root.left.val, root.right.val)
 
 #----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
@@ -463,4 +463,69 @@ def product_tree(root):
 # Time  O(n)
 # #Space: O(h)
 root = TreeNode(4, TreeNode(2, TreeNode(1), TreeNode(3)), TreeNode(5))
-print(product_tree(root))
+#print(product_tree(root))
+
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+# PROBLEM  8: Binary Tree Is Leaf
+# return True if a node with the given value is a leaf node and False otherwise
+class TreeNode():
+     def __init__(self, value, left=None, right=None):
+         self.val = value
+         self.left = left
+         self.right = right
+   
+def is_leaf(root, value):
+    if not root:
+        return False
+
+    if root.value == value:
+        return root.left is None and root.right is None
+    return is_leaf(root.left, value) or is_leaf(root.right, value)
+# Time Complexity: O(n) where n is the number of nodes in the tree, as the worst case requires visiting every node.
+# Space Complexity: O(h) where h is the height of the tree, due to recursion. This could be O(n) in a skewed tree.
+
+
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+# PROBLEM 9: BST Is Leaf
+# returns True if a node with the given value is a leaf node and False otherwise. tree is balanced
+class TreeNode():
+     def __init__(self, val, left=None, right=None):
+         self.val = val
+         self.left = left
+         self.right = right
+   
+def is_leaf_bst(root, value):
+    if not root:
+        return False
+    if root.val == value:
+        return True
+    elif root.val > value:
+        return is_leaf(root.left, value)
+    else:
+        return is_leaf(root.right, value)
+
+   #Time Space O(lon n)
+   
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+# PROBLEM 10: BST Is Full
+# returns True if the tree is full and False otherwise.
+# A binary tree is full if every node has either zero or two children.
+class TreeNode():
+     def __init__(self, val, left=None, right=None):
+         self.val = val
+         self.left = left
+         self.right = right
+   
+def is_full_tree(root):
+    if not root:
+        return True
+    if root.left is None and root.right is None:
+        return True
+    if root.left and root.right: 
+        return is_full_tree(root.left) and is_full_tree(root.right)
+    # if only 1 child is not a full tree
+    return False
+print(is_full_tree(root))
+
+#Time/space: O(n), O(h)
+
