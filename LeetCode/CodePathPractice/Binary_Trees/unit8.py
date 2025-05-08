@@ -7,12 +7,12 @@
 # 
 # # Preorder: Node → Left → Right
 # res.append(node.val)
-# inorder(node.left)
-# inorder(node.right)
+# preorder(node.left)
+# preorder(node.right)
 # 
 # # Postorder: Left → Right → Node
-# inorder(node.left)
-# inorder(node.right)
+# postorder(node.left)
+# postorder(node.right)
 # res.append(node.val)
 
 #----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
@@ -149,7 +149,7 @@ def inorder_traversal(root):
     res = []
     def inorder(node):
         if not node:
-            return []
+            return 
         inorder(node.left)
         res.append(node.val)
         inorder(node.right)
@@ -510,11 +510,6 @@ def is_leaf_bst(root, value):
 # PROBLEM 10: BST Is Full
 # returns True if the tree is full and False otherwise.
 # A binary tree is full if every node has either zero or two children.
-class TreeNode():
-     def __init__(self, val, left=None, right=None):
-         self.val = val
-         self.left = left
-         self.right = right
    
 def is_full_tree(root):
     if not root:
@@ -525,7 +520,150 @@ def is_full_tree(root):
         return is_full_tree(root.left) and is_full_tree(root.right)
     # if only 1 child is not a full tree
     return False
-print(is_full_tree(root))
+#print(is_full_tree(root))
 
 #Time/space: O(n), O(h)
 
+
+#-------------------------------- Problem Set Version 3 -----------------------------------------------
+
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+# PROBLEM 2: 3-Node Booleans
+# Evaluates a boolean operation ('AND' or 'OR') stored in the root node on its two child nodes.
+class TreeNode:
+    def __init__(self, val, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+def tree_expression(root):
+    
+    left_child = root.left.val
+    right_child = root.right.val
+
+    if root.val == 'AND':
+        return left_child and right_child
+    elif root.val == 'OR':
+        return left_child or right_child
+    return False
+#space/time: O(1)
+
+
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+# PROBLEM 3: 3-Node Equality
+# binary tree that has at most 3 nodes: the root, its left child, and its right child.
+# Return True if the root’s children have equal value and False otherwise.
+
+def equality(root):
+    if not root:
+        return False
+    if root.left and root.right:
+        return root.left.val == root.right.val
+    return False
+
+
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+# PROBLEM 4: Find Leftmost Path I
+# returns a list of the left most path of the tree
+
+def left_path(root):
+    if not root:
+        return []
+    return [root.val] + left_path(root.left)
+
+
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+# PROBLEM 5: Find Leftmost Path II
+# returns a list of the left most path of the tree ITERavely
+
+def left_path(root):
+    if not root:
+        return []
+    res = []
+    node = root
+    while node:
+        res.append(node.val)
+        node = node.left
+    return res 
+# Time O(h) bc we go left as long as we get to leaf
+# Space O(h) bc we use list, size of which depends on how deep left node is
+
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+# PROBLEM 6: Pre-order Traversal
+# current node, then the left subtree, then the right subtree.
+#     1
+#     / \
+#    /   \
+#   2     5
+#  / \    
+# 4   3 
+#"""
+# Input: root = 1
+# Expected Output: [1,2,4,3,5]
+
+def preorder_traversal(root):
+    res = []
+    def preorder(node):
+        if not node:
+            return 
+        res.append(node.val)
+        preorder(node.left)
+        preorder(node.right)
+    preorder(root)
+    return res
+
+# Time/Space: O(n)
+
+ # Iteravely  
+def preorder_traversal(root):
+    res = []
+    stack = [root]
+    while stack:
+        node = stack.pop()
+        res.append(node.val)
+
+        if node.right:
+            stack.append(node.right)
+        if node.left:
+            stack.append(node.left)
+    return res
+
+#Time/Space = O(n)
+
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+# PROBLEM 7: Binary Tree All Lesser
+# return True if all nodes in tree have value less than val and False otherwise. If tree is empty, return False.
+
+def is_lesser(root, value):
+    if not root:
+        return False
+    if root.val >= value:
+        return False
+    return is_lesser(root.left, value) and is_lesser(root.right, value)
+
+#Time/Space = O(n)
+
+
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+# PROBLEM 8: Binary Tree Any Greater
+# returns True if any nodes greater than value exist in the tree.
+# If no node greater than value exist, return False. Assume the tree is balanced.
+
+def contains_greater(root, value):
+    if not root:
+        return False
+    if root.val > value:
+        return True
+    return contains_greater(root.left, value) or contains_greater(root.right, value) 
+
+#Time/Space = O(n)
+    #----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+# PROBLEM 9: Binary Search Tree Any Greater
+
+   
+def contains_greater_bst(root, value):
+    if not root:
+        return False
+    if root.val > value:
+        return True
+    return contains_greater_bst(root.right, value) # root.val <= value, then only the right subtree could possibly contain a greater value (due to BST rules
