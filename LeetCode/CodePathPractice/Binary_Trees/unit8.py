@@ -657,7 +657,7 @@ def contains_greater(root, value):
     return contains_greater(root.left, value) or contains_greater(root.right, value) 
 
 #Time/Space = O(n)
-    #----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
 # PROBLEM 9: Binary Search Tree Any Greater
 
    
@@ -667,3 +667,28 @@ def contains_greater_bst(root, value):
     if root.val > value:
         return True
     return contains_greater_bst(root.right, value) # root.val <= value, then only the right subtree could possibly contain a greater value (due to BST rules
+# time log n
+# space log n
+
+
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+# PROBLEM 10: BST Leaves Sum to Root
+# returns True if the sum of the values of all the leaves equal the sum of the value of the root. Return False otherwise.
+   
+def sum_leaves(root):
+    "compares root value to leaf sum"
+    if not root:
+        return False
+
+    def leaf_sum(node):  
+        "helpeer does recursion till it reaches leaves that it returns the value and sums them"
+        if not root:
+            return 0
+        if root.left is None and root.right is None:
+            return node.val
+        return leaf_sum(node.left) + leaf_sum(node.right)
+    
+    return root.val == leaf_sum(root)
+
+# time O N since i need to go all the way till the leaves
+# space is O H bc of recursion stack
