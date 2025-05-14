@@ -58,4 +58,31 @@ def insert(root, key, value):
     return root
 # Time: Log N, but if tree is skewed its N
 # Spaace O(H)
-     
+
+
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+# PROBLEM 4: binary tree remove
+# The tree is sorted by key. If multiple nodes with the given key exist, remove the
+# first node you find. If you need to remove a node with two children, use the in-order successor of that node,
+# which is the smallest value in its right subtree.
+def remove_bst(root, key):
+    if not root:
+        return None
+    if key > root.key:
+        root.right = remove_bst(root.right, key)
+    elif key < root.key:
+        root.left = remove_bst(root.left, key)
+    elif key == root.key:
+        # it removes current node, and points it to None if no childs, or if ONE child, to that child
+        if not root.right:
+            return root.left
+        elif not root.left:
+            return root.right
+        elif root.left and root.right: # if 2 childs exist we do a in-order successor
+            pred = root.right
+            while pred.left:
+                pred = pred.left
+            root.key = pred.key
+            root.val = pred.val
+    return root
+             
