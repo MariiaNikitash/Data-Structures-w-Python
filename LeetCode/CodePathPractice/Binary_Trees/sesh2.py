@@ -25,3 +25,37 @@ def is_univalued(root):
     return helper(root, root.val)
 print(is_univalued(root=TreeNode(1, TreeNode(1))))
     
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+# PROBLEM 2: Binary Tree Height
+def height(root):
+    if not root:
+          return 0
+    # Return the max height of the two subtrees, plus 1 for the current node
+    return 1 + max(height(root.left), height(root.right))
+#Time O(n)
+#Space O(h)
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+# PROBLEM 3: binary tree insert
+#  insert new node with a given key and value into the tree.
+# Return root of modified tree. The tree is sorted by key.
+# If a node with given key already exists, update existing key’s value. 
+class TreeNode():
+     def __init__(self, key, value, left=None, right=None):
+            self.key = key
+            self.val = value
+            self.left = left
+            self.right = right
+
+def insert(root, key, value):
+    if not root:
+          return TreeNode(key, value)
+    if key < key.root:
+         return insert(root.left, key, value)
+    elif key > key.root:
+         return insert(root.right, key, value)
+    elif key == key.root:
+         root.val = value
+    return root
+# Time: Log N, but if tree is skewed its N
+# Spaace O(H)
+     
