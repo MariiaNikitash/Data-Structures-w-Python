@@ -85,4 +85,12 @@ def remove_bst(root, key):
             root.key = pred.key
             root.val = pred.val
     return root
-             
+
+# time/space: O(h)    
+
+
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+# Problem 5: BST In-order Successor
+
+def inorder_successor(root, current):
+      pass
