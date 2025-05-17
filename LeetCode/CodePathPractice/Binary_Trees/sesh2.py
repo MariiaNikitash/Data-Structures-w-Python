@@ -91,6 +91,41 @@ def remove_bst(root, key):
 
 #----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
 # Problem 5: BST In-order Successor
+# in-order successor is the node with the smallest key greater than the key of the given node.
+def inorder_successor(root, node):
+    def find_min(node):
+        while node.left:
+            node = node.left
+        return node
 
-def inorder_successor(root, current):
-      pass
+    if node.right:
+        return find_min(node.right)
+    
+    successor = None
+    while root:
+        if node.val < root.val:
+            successor = root
+            root = root.left
+        elif node.val > root.val:
+            root = root.right
+        else:
+            break
+    return successor
+    
+# I dont get this sh
+
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+# Problem 6: BST In-order Successor
+def merge_trees(self, root1, root2):
+    if not root1 and not root2:
+        return None
+    v1 = root1.val if root1 else 0
+    v2 = root2.val if root2 else 0
+    # Merge the values if both nodes are present
+    root = TreeNode(v1+v2)
+    root.left = merge_trees(v1.left if v1 else None , v2.left if v2 else None)
+    root.right = merge_trees(v1.right if v1 else None, v2.right if v2 else None)
+
+    return root
+# TIme O(N+M)vbc we raverse 2 trees
+#Space O(h) height of deepest tree
