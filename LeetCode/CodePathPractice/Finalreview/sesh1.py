@@ -18,3 +18,38 @@ print(valid(s))
 # Space: o(n)
 
 
+#1. Character Frequency Counter
+#Problem:
+#Return a dictionary with the count of each character in a string.
+
+def freq(s):
+    dic = {}
+    for c in s:
+        if c not in dic:
+            dic[c] = 1
+        else:
+            dic[c] +=1
+
+    return dic
+s = "leetcode"
+print(freq(s))
+#Output: {'h': 1, 'e': 1, 'l': 2, 'o': 1}
+
+
+def repeat(s):
+    dic = {}
+    for c in s:
+        if c not in dic:
+            dic[c] = 1
+        else:
+            dic[c] += 1
+    for i, c in enumerate(s):
+        if dic[c] == 1:
+            return i
+    return -1
+
+#Input: "leetcode"
+#Output: 0 (first 'l' is unique)
+print(repeat(s))
+
+
