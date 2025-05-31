@@ -132,8 +132,7 @@ print(check2)
 #False
 #True
 
-#Problem 3,7 (not complete)
-
+#Problem 3,7 (not completed)
 #--------------------- Problem Set Version 2 -------------------------------------
 #                             (Below)
 
