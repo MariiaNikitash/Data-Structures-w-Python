@@ -93,10 +93,20 @@ def shuffle(message, indices):
         l[index] = message[count]
         count +=1
     return ''.join(l)
-
-
 message = "evil"
 indices = [3, 1, 2, 0]
 print(shuffle(message, indices))
 
 
+
+def shuffle(message, indices):
+    # Initialize a list to store the shuffled characters
+    shuffled_message = [''] * len(message)
+    
+    for i in range(len(message)):
+        index= indices[i]
+        char = message[i] 
+        shuffled_message[index] = char
+    
+    # Join the list into a string and return it
+    return ''.join(shuffled_message)
