@@ -1,0 +1,102 @@
+def greeting(name):
+	print(f"Welcome to The Hundred Acre Wood {name}! My name is Christopher Robin.")
+	
+#greeting("Masha")
+
+def get_item(items, x):
+    for i in range (len(items)):
+        if i == x:
+            return items[i]
+        
+items = ["piglet", "pooh", "roo", "rabbit"]
+x = 2
+#print(get_item(items, x))
+
+def sum_honey(hunny_jars):
+    sum = 0
+    for num in hunny_jars:
+         sum += num
+    return sum
+hunny_jars = [2, 3, 4, 5]
+#print(sum_honey(hunny_jars))
+hunny_jars = []
+#print(sum_honey(hunny_jars))
+
+def doubled(hunny_jars):
+	return [num*2 for num in hunny_jars]
+hunny_jars = [1, 2, 3]
+#print(doubled(hunny_jars))
+
+def count_less_than(race_times, threshold):
+    count = 0
+    for num in race_times:
+        if num < threshold:
+            count +=1
+    return count
+          
+
+race_times = [1, 2, 3, 4, 5, 6]
+threshold = 4
+#print(count_less_than(race_times, threshold))
+
+def print_todo_list(task):
+    print("Pooh's To Dos:\n")
+    for i in range(len(task)):
+         print(f"{i+1} . {task[i]}")
+    
+        
+        
+task = ["Count all the bees in the hive", "Chase all the clouds from the sky", "Think", "Stoutness Exercises"]
+#print_todo_list(task)
+task = []
+#print_todo_list(task)
+
+
+
+
+
+def words_with_char(words, x):
+    l= []
+    for i, char in enumerate(words):
+        if x in char:
+            l.append(i)
+    return l
+              
+words = ["batman", "superman"]
+x = "a"
+#print(words_with_char(words, x))
+
+
+def hulk_smash(n):
+    answer = []
+    for i in range(1, n+1):
+        if i % 3 == 0 and i % 5 == 0:
+            answer.append("HulkSmash")
+        elif i % 3 == 0:
+            answer.append("Hulk")
+        elif i % 5 == 0:
+            answer.append("Smash")
+        else:
+            answer.append(str(i))
+    return answer
+        
+            
+
+n = 15
+#print(hulk_smash(n))
+
+
+def shuffle(message, indices):
+    l = [""] * len(message) 
+    count = 0
+    for index in indices:
+        l[index] = message[count]
+        count +=1
+    return ''.join(l)
+
+
+message = "evil"
+indices = [3, 1, 2, 0]
+print(shuffle(message, indices))
+
+
