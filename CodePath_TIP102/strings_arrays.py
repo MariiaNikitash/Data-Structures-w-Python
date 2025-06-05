@@ -95,7 +95,7 @@ def shuffle(message, indices):
     return ''.join(l)
 message = "evil"
 indices = [3, 1, 2, 0]
-print(shuffle(message, indices))
+#print(shuffle(message, indices))
 
 
 
@@ -110,3 +110,27 @@ def shuffle(message, indices):
     
     # Join the list into a string and return it
     return ''.join(shuffled_message)
+
+
+# Problem 4
+def minimum_boxes(meals, capacity):
+    capacity.sort(reverse=True)
+    sum_meals = sum(meals)
+    boxes = 0
+    for spot in capacity:
+        if sum_meals <=0:
+            break
+        sum_meals -=spot
+        boxes +=1
+    return boxes
+
+
+meals = [1, 3, 2]
+capacity = [4, 3, 1, 5, 2]
+print(minimum_boxes(meals, capacity))
+
+meals = [5, 5, 5]
+capacity = [2, 4, 2, 7]
+print(minimum_boxes(meals, capacity))
+
+
