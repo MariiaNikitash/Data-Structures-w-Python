@@ -131,6 +131,25 @@ print(minimum_boxes(meals, capacity))
 
 meals = [5, 5, 5]
 capacity = [2, 4, 2, 7]
-print(minimum_boxes(meals, capacity))
+#print(minimum_boxes(meals, capacity))
 
 
+def wealthiest_customer(accounts):
+    richest = 0
+    max_sum = 0
+    for customer, money in enumerate(accounts):
+        current_sum = sum(money)
+        if current_sum > max_sum:
+            max_sum = current_sum
+            richest = customer
+    return [richest, max_sum]
+
+
+
+accounts = [
+	[1, 2, 3],
+	[3, 2, 1]
+]
+print(wealthiest_customer(accounts))
+#Space O(nxm)
+#Time O(1)
