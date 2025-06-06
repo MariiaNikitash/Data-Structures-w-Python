@@ -150,6 +150,67 @@ accounts = [
 	[1, 2, 3],
 	[3, 2, 1]
 ]
-print(wealthiest_customer(accounts))
+#print(wealthiest_customer(accounts))
 #Space O(nxm)
 #Time O(1)
+
+
+def transpose(matrix):
+   row = len(matrix)
+   col = len(matrix[0])
+   result = [[0] * row for _ in range(col)]
+
+   for r in range(row):
+       for c in range(col):
+           result[r][c] = matrix[r][c]
+   return result
+#Time/Space O(m * n)   
+
+matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+#print(transpose(matrix))
+
+def reverse_list(lst):
+    p1 = 0
+    p2 = len(lst) - 1
+
+    while p1 < p2:
+        lst[p1],lst[p2] = lst[p2], lst[p1]
+        p1+=1
+        p2-=1
+    return lst
+        
+
+
+
+lst = ["pooh", "christopher robin", "piglet", "roo", "eeyore"]
+print(reverse_list(lst))
+
+
+
+def remove_dupes(items):
+    p1 = 1
+    p2 = 2
+
+items = ["extract of malt", "haycorns", "honey", "thistle", "thistle"]
+remove_dupes(items)
+
+items = ["extract of malt", "haycorns", "honey", "thistle"]
+remove_dupes(items)
+
+
+
+
+def sort_by_parity(nums):
+    p1 = 0
+    p2 = 1
+
+
+nums = [3, 1, 2, 4]
+sort_by_parity(nums)
+
+nums = [0]
+sort_by_parity(nums)
