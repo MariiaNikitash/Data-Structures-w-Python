@@ -182,35 +182,45 @@ def reverse_list(lst):
         p1+=1
         p2-=1
     return lst
-        
-
-
-
 lst = ["pooh", "christopher robin", "piglet", "roo", "eeyore"]
-print(reverse_list(lst))
+#print(reverse_list(lst))
 
 
 
 def remove_dupes(items):
-    p1 = 1
-    p2 = 2
+    l = 0
+    while l < len(items)-1:
+        if items[l] == items[l+1]:
+            items.pop(l+1)
+        else:
+            l+=1
+    return items
+
 
 items = ["extract of malt", "haycorns", "honey", "thistle", "thistle"]
-remove_dupes(items)
+print(remove_dupes(items))
 
 items = ["extract of malt", "haycorns", "honey", "thistle"]
-remove_dupes(items)
+print(remove_dupes(items))
 
 
 
-
+# in 2 ptrs use if-elif block bc i only want to execute 1 line 
 def sort_by_parity(nums):
-    p1 = 0
-    p2 = 1
+    l = 0
+    r = len(nums) -1
+    while l<r:
+        if nums[l] % 2 == 0:
+            l+=1
+        elif nums[r] % 2 == 1:
+            r-=1
+        else:
+            nums[l], nums[r] = nums[r], nums[l]
+    return nums
 
-
+#O(n) time, O(1) space
 nums = [3, 1, 2, 4]
-sort_by_parity(nums)
+print(sort_by_parity(nums))
 
 nums = [0]
 sort_by_parity(nums)
