@@ -1,3 +1,4 @@
+# In Class Solutions 
 def greeting(name):
 	print(f"Welcome to The Hundred Acre Wood {name}! My name is Christopher Robin.")
 	
@@ -127,7 +128,7 @@ def minimum_boxes(meals, capacity):
 
 meals = [1, 3, 2]
 capacity = [4, 3, 1, 5, 2]
-print(minimum_boxes(meals, capacity))
+#print(minimum_boxes(meals, capacity))
 
 meals = [5, 5, 5]
 capacity = [2, 4, 2, 7]
@@ -154,6 +155,21 @@ accounts = [
 #Space O(nxm)
 #Time O(1)
 
+#Problem 6: Smaller Than
+def smaller_than_current(nums):
+    result = []
+    for i in range(len(nums)):
+        count = 0
+        for j in range(len(nums)):
+            if i != j and nums[i] > nums[j]:
+                count +=1
+        result.append(count)
+    return result
+#Time O(n^2), Space O(N) bc result will contain all n values of smaller chars that n   
+nums = [8, 1, 2, 2, 3]
+print(smaller_than_current(nums))
+
+# SESSION 2
 
 def transpose(matrix):
    row = len(matrix)
@@ -198,10 +214,10 @@ def remove_dupes(items):
 
 
 items = ["extract of malt", "haycorns", "honey", "thistle", "thistle"]
-print(remove_dupes(items))
+#print(remove_dupes(items))
 
 items = ["extract of malt", "haycorns", "honey", "thistle"]
-print(remove_dupes(items))
+#print(remove_dupes(items))
 
 
 
@@ -220,7 +236,48 @@ def sort_by_parity(nums):
 
 #O(n) time, O(1) space
 nums = [3, 1, 2, 4]
-print(sort_by_parity(nums))
+#print(sort_by_parity(nums))
 
 nums = [0]
 sort_by_parity(nums)
+
+
+# Container with most water
+def most_honey(height):
+    max_area = 0
+    l,r = 0, len(height)-1
+    while l < r:
+        area = (r-l) * min(height[l], height[r])
+        max_area = max(max_area, area)
+        if height[r] > height[l]:
+            l +=1
+        else:
+            r-=1
+    return max_area
+
+
+height = [1, 8, 6, 2, 5, 4, 8, 3, 7]
+#print(most_honey(height))
+
+
+# Merge Intervals
+#Problem 6: Merge Intervals
+#Write a function merge_intervals() that accepts an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.
+
+def merge_intervals(intervals):
+    if not intervals:
+        return []
+    intervals.sort(key= lambda x: x[0])
+    merged = [intervals[0]] #[1,3]
+    for start, end in intervals[1:]:
+        # Get the end of the last merged interval
+        last_end = merged[-1][1] #3
+        if start <= last_end:
+            merged[-1][1] = max(last_end, end)
+        else:
+            intervals.append([start,end])
+    return merged
+
+
+intervals = [[1, 3], [2, 6], [8, 10], [15, 18]]
+#print(merge_intervals(intervals))
