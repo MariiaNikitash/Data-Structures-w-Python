@@ -169,6 +169,24 @@ def smaller_than_current(nums):
 nums = [8, 1, 2, 2, 3]
 print(smaller_than_current(nums))
 
+#Diagonal Sum
+def diagonal_sum(grid):
+    res = 0
+    n = len(grid)
+    for i in range(n):
+        res+=grid[i][i]
+        res+=grid[i][n-1-i]
+    
+    if n % 2 == 1:
+        center = grid[n // 2][n // 2]
+        res -= center
+    return res
+
+grid = [
+	[1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]]
+print(diagonal_sum(grid))
 # SESSION 2
 
 def transpose(matrix):
