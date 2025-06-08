@@ -299,3 +299,13 @@ def merge_intervals(intervals):
 
 intervals = [[1, 3], [2, 6], [8, 10], [15, 18]]
 #print(merge_intervals(intervals))
+
+#hackerrank 
+#Needle
+def find_needle(haystack, needle):
+    if needle == "":
+        return 0
+    for i in range(len(haystack) - len(needle) +1):
+        if haystack[i: i+len(needle)] == needle:
+            return i
+    return -1
