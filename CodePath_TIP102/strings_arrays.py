@@ -322,3 +322,17 @@ def canPlaceFlowers(flowerbed, n):
             count += 1
 
     return count >= n
+
+#Largest Val in MAtrix
+def largest_val(grid):
+    result = []
+    
+    for i in range(n - 2):        # rows
+        row = []
+        for j in range(n - 2):    # cols
+            max_val = 0
+            for r in range(i, i+3):   # 3 rows in the block
+                for c in range(j, j+3):  # 3 cols in the block
+                    max_val = max(max_val, grid[r][c])
+            row.append(max_val)
+        result.append(row)
