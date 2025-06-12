@@ -1,2 +1,3 @@
-# Data-Structures-w-Python
+# Data Structures and Algorithms Repositary
+
 
