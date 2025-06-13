@@ -14,6 +14,7 @@ set_times2 = []
 #print(lineup(artists1, set_times1))
 #print(lineup(artists2, set_times2))
 
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
 
 # Sesion 1
 def total_treasure(treasure_map):
@@ -29,6 +30,7 @@ treasure_map1 = {
 }
 
 #print(total_treasure(treasure_map1)) 
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
 
 # P2
 def can_trust_message(message):
@@ -50,6 +52,7 @@ message2 = "trust me"
 #print(can_trust_message(message1))
 #print(can_trust_message(message2))
 
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
 
 #P3 
 def find_duplicate_chests(chests):
@@ -79,9 +82,10 @@ chests1 = [4, 3, 2, 7, 8, 2, 3, 1]
 chests2 = [1, 1, 2]
 chests3 = [1]
 
-print(find_duplicate_chests(chests1))
-print(find_duplicate_chests(chests2))
+#print(find_duplicate_chests(chests1))
+#print(find_duplicate_chests(chests2))
 
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
 
 # Problem 4 
 # Remove Letter To Equalize Frequency
@@ -133,6 +137,25 @@ def is_balanced(code):
 
 codes = ['aabbc', 'aaabb', 'aabbcc', 'aabbccdde']
 for code in codes:
-    print(code, "is", is_balanced(code)) 
+    #print(code, "is", is_balanced(code)) 
 
 
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+# Two Sum 
+ def two_sum(nums, target):
+    seen = {}
+    for i, num in enumerate(nums):
+        complement = target - num
+        if complement in seen:
+            return [seen[complement], i]
+        seen[num] = i
+
+print(two_sum([2, 7, 8, 5], 7))
+
+
+### SESH 2
+1:2
+3:2
+2:3
+5:1
+7:1
