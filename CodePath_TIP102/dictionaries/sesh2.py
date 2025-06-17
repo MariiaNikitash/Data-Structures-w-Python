@@ -125,4 +125,21 @@ def findMatrix(nums):
     
 
 nums = [1,3,4,1,2,3,1]
-print(findMatrix(nums))
+#print(findMatrix(nums))
+
+
+# Hackerrank 
+# Roman to Integer
+def romanToInt(s):
+    res = 0
+    dic = {"I":1, "V":5, "X":10, "L":50, "C":100, "D":500, "M":1000}
+    for i in range(len(s)):
+        if i+1 < len(s) and dic[s[i]] < dic[s[i+1]]:
+            res -= dic[s[i]]
+        else:
+            res += dic[s[i]]
+    return res
+
+s = "III" # 3
+s1 = "CMXCVIII" # 998 so C<M so res=-100, then M>X so res = 900, then X<C so res=890, C<V so res=990, then V>I so res=995 then +1 +1+1 = 998
+print(romanToInt(s1))
