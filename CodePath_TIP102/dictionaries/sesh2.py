@@ -169,5 +169,28 @@ def subdomain_visits(cpdomains):
     return res
 
 
-print(subdomain_visits(["900 abstract.gallery.com", "50 impressionism.com", 
-              "1 contemporary.gallery.com", "5 medieval.org"]))
+#print(subdomain_visits(["900 abstract.gallery.com", "50 impressionism.com", 
+#              "1 contemporary.gallery.com", "5 medieval.org"]))
+
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+# #Problem 5 # REVISE!!!
+def beauty_sum(collection):
+    total_beauty = 0
+    
+    # Generate all substrings
+    for i in range(len(collection)):
+        freq = {}
+        for j in range(i, len(collection)):
+            char = collection[j]
+            if char in freq:
+                freq[char] += 1
+            else:
+                freq[char] = 1
+            
+            # Calculate the beauty of the current substring
+            max_freq = max(freq.values())
+            min_freq = min(freq.values())
+            
+            total_beauty += (max_freq - min_freq)
+    
+    return total_beauty
