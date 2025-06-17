@@ -63,7 +63,8 @@ collection3 = [1, 1] # T
 #print(is_authentic_collection(collection2))
 #print(is_authentic_collection(collection3))
 
-
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+# #Problem 3:
 def organize_exhibition(collection):
     result = []
     counts = dict()
@@ -127,6 +128,7 @@ def findMatrix(nums):
 nums = [1,3,4,1,2,3,1]
 #print(findMatrix(nums))
 
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
 
 # Hackerrank 
 # Roman to Integer
@@ -142,4 +144,30 @@ def romanToInt(s):
 
 s = "III" # 3
 s1 = "CMXCVIII" # 998 so C<M so res=-100, then M>X so res = 900, then X<C so res=890, C<V so res=990, then V>I so res=995 then +1 +1+1 = 998
-print(romanToInt(s1))
+#print(romanToInt(s1))
+
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+# #Problem 4
+def subdomain_visits(cpdomains):
+    visit_count = {}
+    res = []
+    #split count and domain 
+    for domain in cpdomains:
+        count, domain = domain.split()
+        count = int(count)
+        fragments = domain.split('.')
+
+        #make subdomains and count visits
+        for i in range(len(fragments)):
+            subdomain = '.'.join(fragments[i:])
+            if subdomain in visit_count:
+                visit_count[subdomain] += count
+            else:
+                visit_count[subdomain] = count
+    for domain, count in visit_count.items():
+        res.append(f"{count} {domain}")
+    return res
+
+
+print(subdomain_visits(["900 abstract.gallery.com", "50 impressionism.com", 
+              "1 contemporary.gallery.com", "5 medieval.org"]))
