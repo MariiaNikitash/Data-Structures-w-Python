@@ -92,6 +92,37 @@ collection1 = ["O'Keefe", "Kahlo", "Picasso", "O'Keefe", "Warhol",
               "Kahlo", "O'Keefe"]
 collection2 = ["Kusama", "Monet", "Ofili", "Banksy"]
 
-print(organize_exhibition(collection1))
-print(organize_exhibition(collection2))
+#print(organize_exhibition(collection1))
+#print(organize_exhibition(collection2))
 
+# Or 
+
+def findMatrix(nums):
+    count = {}
+    res = []
+
+    for n in nums:
+        # Step 1: Determine row by checking and initializing manually
+        if n in count:
+            row = count[n]
+        else:
+            row = 0
+
+        # Step 2: Create new row if needed
+        if len(res) == row:
+            res.append([])
+
+        # Step 3: Add the number to the correct row
+        res[row].append(n)
+
+        # Step 4: Increment the count manually
+        if n in count:
+            count[n] += 1
+        else:
+            count[n] = 1
+
+    return res
+    
+
+nums = [1,3,4,1,2,3,1]
+print(findMatrix(nums))
