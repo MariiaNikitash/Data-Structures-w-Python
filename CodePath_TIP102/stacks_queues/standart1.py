@@ -130,3 +130,49 @@ def clean_post(post):
 print(clean_post("poOost")) 
 print(clean_post("abBAcC")) 
 print(clean_post("s")) 
+
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+#Problem 6: Post Editor
+# ----- Implemented using Deque, but with stack properties (LIFO)
+
+from collections import deque
+
+def edit_post(post):
+    stack = deque()
+    res = []
+    for c in post:
+        if c != ' ':
+            stack.append(c)
+        else:
+            while stack:
+                res.append(stack.pop())
+            res.append(' ')
+    
+    while stack:
+        res.append(stack.pop())
+
+    return ''.join(res)
+
+print(edit_post("Boost your engagement with these tips")) 
+print(edit_post("Check out my latest vlog"))
+
+
+
+# ----- Implemented using Stack (LIFO)
+def edit_post(post):
+    stack = []
+    res = []
+    for c in post:
+        if c != ' ':
+            stack.append(c)
+        else:
+            while stack:
+                res.append(stack.pop())
+            res.append(' ')
+    
+    while stack:
+        res.append(stack.pop())
+
+    return ''.join(res)
+print(edit_post("Boost your engagement with these tips")) 
+print(edit_post("Check out my latest vlog"))
