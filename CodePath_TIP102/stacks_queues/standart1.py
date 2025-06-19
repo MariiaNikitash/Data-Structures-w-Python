@@ -96,5 +96,37 @@ def engagement_b(engagements):
   
     return result
 
-print(engagement_b([-4, -1, 0, 3, 10]))
-print(engagement_b([-7, -3, 2, 3, 11]))
+#print(engagement_b([-4, -1, 0, 3, 10]))
+#print(engagement_b([-7, -3, 2, 3, 11]))
+
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+#Problem 5: Content Cleaner
+
+#_*------ not working solution !!!!!!!
+#def clean_post(post):
+#    stack = []
+#    res = ""
+#    for c in post:
+#        if not stack or c != stack[-1]:
+#            stack.append(c)
+#        else:
+#            res +=c
+#            stack.pop()
+#    while stack:
+#        res +=stack.pop()
+#    return res, stack
+
+
+# GOOD SOLUTION # OR I can do c.swapcase()): so if stack and (stack[-1] == char.swapcase()):
+def clean_post(post):
+    stack = []
+    for c in post:
+        if stack and abs(ord(c) - ord(stack[-1])) == 32: 
+            stack.pop()
+        else:
+            stack.append(c)
+    return ''.join(stack)
+    
+print(clean_post("poOost")) 
+print(clean_post("abBAcC")) 
+print(clean_post("s")) 
