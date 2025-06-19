@@ -40,3 +40,12 @@ souvenirs3 = ["keychain", "magnet", "hat", "candy", "postcard", "stuffed bear"]
 print(unique_souvenir_counts(souvenirs1))  
 print(unique_souvenir_counts(souvenirs2)) 
 print(unique_souvenir_counts(souvenirs3))
+
+
+def arrange_guest_arrival_order(arrival_pattern):
+    
+print(arrange_guest_arrival_order("IIIDIDDD"))  
+print(arrange_guest_arrival_order("DDD"))  
+
+#123549876
+#4321
