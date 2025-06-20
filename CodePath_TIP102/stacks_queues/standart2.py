@@ -31,12 +31,34 @@ def first_symmetrical_landmark(landmarks):
             res += mark
             return res
     return ''
-    
-    
+ 
+#print(first_symmetrical_landmark(["canyon","forest","rotor","mountain", "ama"])) rotor
+#print(first_symmetrical_landmark(["plateau","valley","cliff"])) " "
+
+# Problem 3: Terrain Elevation Match
+def terrain_elevation_match(terrain):
+    low,high = 0, len(terrain)
+    res = []
+    for i in range(len(terrain)):
+        if terrain[i] == 'I':
+            res.append(low)
+            low +=1
+        else:
+            res.append(high)
+            high -=1
+    # Only one number remains — low == high
+    res.append(low)  # or res.append(high)
+
+    #if terrain[-1] == 'I':
+    #    res.append(low)
+    #else:
+    #    res.append(high)
+    return res
+
+print(terrain_elevation_match("IDID")) #[0, 4, 1, 3, 2]
+print(terrain_elevation_match("III")) #[0, 1, 2, 3]
+print(terrain_elevation_match("DDI")) #[3, 2, 0, 1]
 
 
 
-print(first_symmetrical_landmark(["canyon","forest","rotor","mountain", "ama"])) 
-print(first_symmetrical_landmark(["plateau","valley","cliff"])) 
 
-#rotor
