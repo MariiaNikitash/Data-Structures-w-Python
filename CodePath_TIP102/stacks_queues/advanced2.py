@@ -65,3 +65,25 @@ def min_swaps(s):
 print(min_swaps("][][")) #1
 print(min_swaps("]]][[[")) #2
 print(min_swaps("[]"))  #0
+
+
+# Problem 5: LC: 1249. Minimum Remove to Make Valid Parentheses (medium)
+def make_balanced_room(s):
+    s = list(s)
+    stack = []
+    for i, char in enumerate(s):
+        if char == "(":
+            stack.append(i)
+        elif char == ")":
+            if stack:
+                stack.pop()
+            else:
+                s[i] = ''
+    while stack:
+        s[stack.pop()] = ''
+        
+    return ''.join(s)
+print(make_balanced_room("art(t(d)e)sign)")) # art(t(d)e)s)ign
+print(make_balanced_room("d)e(s)ign")) #de(s)ign
+print(make_balanced_room("))((")) # " "
+
