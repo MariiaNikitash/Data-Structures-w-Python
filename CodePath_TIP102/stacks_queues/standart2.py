@@ -86,4 +86,28 @@ print(find_the_log_conc_val([7, 52, 2, 4])) #596
 print(find_the_log_conc_val([5, 14, 13, 8, 12])) #673
 
 
+# #----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+# Problem 5: Number of Students Unable to eat lunch 
+def countStudents( students, sandwiches) -> int:
+        dic_stud = {}
+        for s in students:
+            if s in dic_stud:
+                dic_stud[s]+=1
+            else:
+                dic_stud[s]=1
+        
+        count1,count0 =dic_stud.get(1),dic_stud.get(0)
+        for num in sandwiches:
+            if num == 0:
+                if count0 == 0:
+                    break
+                count0 -= 1
+            else:
+                if count1 == 0:
+                    break
+                count1-=1
+        return count1+count0
 
+
+# print(count_explorers([1, 1, 0, 0], [0, 1, 0, 1]))  Out: 3
+# print(count_explorers([1, 1, 1, 0, 0, 1], [1, 0, 0, 0, 1, 1])) Out: 0
