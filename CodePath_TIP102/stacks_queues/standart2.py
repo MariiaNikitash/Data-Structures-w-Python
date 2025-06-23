@@ -111,3 +111,40 @@ def countStudents( students, sandwiches) -> int:
 
 # print(count_explorers([1, 1, 0, 0], [0, 1, 0, 1]))  Out: 3
 # print(count_explorers([1, 1, 1, 0, 0, 1], [1, 0, 0, 0, 1, 1])) Out: 0
+
+
+# Hackerrramk 
+# Rem dupes from sorterd array w O(1) space
+def remove_duplicates(nums):
+    if not nums:
+        return 0
+    l = 1
+    for r in range(1, len(nums)):
+        if nums[r] != nums[r-1]:
+            nums[l] = nums[r]
+            l += 1
+            
+    return l
+
+
+# Intrsection of 2 arrays (2 ptr) 
+# easy done w set
+# 2 ptr didnt get 
+def intersection(nums1, nums2):
+    nums1.sort()
+    nums2.sort()
+    
+    i=j=0
+    res = []
+    while i < len(nums1) and j < len(nums2):
+        if nums1[i] == nums2[j]:
+            if not res or res[-1] != nums1[i]:
+                res.append(nums1[i])
+            i+=1
+            j+=1
+        elif nums1[i] <nums2[j]:
+            i+=1
+        else:
+            j+=1
+    return res
+            

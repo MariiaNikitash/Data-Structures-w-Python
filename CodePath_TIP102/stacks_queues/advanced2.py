@@ -81,9 +81,13 @@ def make_balanced_room(s):
                 s[i] = ''
     while stack:
         s[stack.pop()] = ''
-        
+
     return ''.join(s)
 print(make_balanced_room("art(t(d)e)sign)")) # art(t(d)e)s)ign
 print(make_balanced_room("d)e(s)ign")) #de(s)ign
 print(make_balanced_room("))((")) # " "
+
+
+# Hackerrank 
+# Two Sum array is sorted 
 
