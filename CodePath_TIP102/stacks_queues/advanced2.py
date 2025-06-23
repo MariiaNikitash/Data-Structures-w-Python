@@ -20,13 +20,13 @@ def findRestaurant(list1, list2):
 
 list1 = ["Shogun","Tapioca Express","Burger King","KFC"]
 list2 = ["Piatti","The Grill at Torrey Pines","Hungry Hunter Steakhouse","Shogun"]
-print(findRestaurant(list1, list2))
+#print(findRestaurant(list1, list2))
 
 
 #Problem 2
 def build_skyscrapers(floors):
     pass
-print(build_skyscrapers([10, 5, 8, 3, 7, 2, 9])) 
+#print(build_skyscrapers([10, 5, 8, 3, 7, 2, 9])) 
 
 
 
@@ -62,9 +62,9 @@ def min_swaps(s):
     return (max_imbalance +1) // 2
 
 
-print(min_swaps("][][")) #1
-print(min_swaps("]]][[[")) #2
-print(min_swaps("[]"))  #0
+#print(min_swaps("][][")) #1
+#print(min_swaps("]]][[[")) #2
+#print(min_swaps("[]"))  #0
 
 
 # Problem 5: LC: 1249. Minimum Remove to Make Valid Parentheses (medium)
@@ -83,11 +83,37 @@ def make_balanced_room(s):
         s[stack.pop()] = ''
 
     return ''.join(s)
-print(make_balanced_room("art(t(d)e)sign)")) # art(t(d)e)s)ign
-print(make_balanced_room("d)e(s)ign")) #de(s)ign
-print(make_balanced_room("))((")) # " "
+#print(make_balanced_room("art(t(d)e)sign)")) # art(t(d)e)s)ign
+#print(make_balanced_room("d)e(s)ign")) #de(s)ign
+#3print(make_balanced_room("))((")) # " "
 
 
 # Hackerrank 
 # Two Sum array is sorted 
+def TwoSum(nums, target):
+    l,r = 0, len(nums)-1
+    while l<r:
+        cur_sum = nums[l] + nums[r]
+        if target == cur_sum:
+            return [l+1, r+1]
+        elif cur_sum > target:
+            r-=1
+        else:
+            l+=1
+#print(TwoSum([2,7,11,15], 9))
 
+
+# Top k Largest Element in array
+import heapq
+def topKlargest(nums, k):
+    max_h = [-x for x in nums]
+    heapq.heapify(max_h)
+
+    res = []
+    for _ in range(min(len(nums), k)):
+        largest = -heapq.heappop(max_h)
+        res.append(largest)
+
+    return res
+print(topKlargest([3,2,1,5,6,4], 2))
+print(topKlargest([], 2))
