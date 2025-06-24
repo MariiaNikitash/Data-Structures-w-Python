@@ -118,4 +118,62 @@ nft_queue = [
     {"name": "Pixel Dreams", "processing_time": 3},
     {"name": "Urban Jungle", "processing_time": 1}
 ]
-print(process_nft_queue(nft_queue)) # ['Abstract Horizon', 'Pixel Dreams', 'Urban Jungle']
+#print(process_nft_queue(nft_queue)) # ['Abstract Horizon', 'Pixel Dreams', 'Urban Jungle']
+
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+#Problem 7: Validate NFT Addition
+# Time: O(n)
+# Space: O(n)
+
+def validate_nft_actions(actions):
+    if not actions:
+        return True
+    stack = []
+    for action in actions:
+        if action == 'add':
+            stack.append(action)
+        else:
+            if not stack:
+                return False
+            stack.pop()
+    return not stack
+
+
+actions = ["add", "add", "remove", "remove"]
+actions_2 = ["add", "remove", "add", "remove"]
+actions_3 = ["add", "remove", "remove", "add"]
+
+#print(validate_nft_actions(actions)) # T
+#print(validate_nft_actions(actions_2)) # T
+#print(validate_nft_actions(actions_3)) # F
+
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+#Problem 7: Validate NFT Addition
+# Time: O(log(n))
+# Space: O(1)
+def find_closest_nft_values(nft_values, budget):
+    l,r = 0, len(nft_values)-1
+    closest_below, closest_above = None, None
+    while l <= r:
+        mid = (l+r) // 2
+        if nft_values[mid] == budget:
+            return nft_values[mid], nft_values[mid]
+        elif nft_values[mid] < budget:
+            closest_below = nft_values[mid]
+            l = mid+1
+        else:
+            closest_above = nft_values[mid]
+            r = mid-1
+    return closest_below, closest_above
+
+
+
+
+nft_values = [3.5, 5.4, 7.2, 9.0, 10.5]
+nft_values_2 = [2.0, 4.5, 6.3, 7.8, 12.1]
+nft_values_3 = [1.0, 2.5, 4.0, 6.0, 9.0]
+
+print(find_closest_nft_values(nft_values, 8.0)) # (7.2, 9.0)
+print(find_closest_nft_values(nft_values_2, 6.5)) # (6.3, 7.8)
+print(find_closest_nft_values(nft_values_3, 3.0)) # (2.5, 4.0)
+
