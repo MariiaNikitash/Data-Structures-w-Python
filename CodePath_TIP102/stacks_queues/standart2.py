@@ -86,7 +86,7 @@ print(find_the_log_conc_val([7, 52, 2, 4])) #596
 print(find_the_log_conc_val([5, 14, 13, 8, 12])) #673
 
 
-# #----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
 # Problem 5: Number of Students Unable to eat lunch 
 def countStudents( students, sandwiches) -> int:
         dic_stud = {}
@@ -112,6 +112,7 @@ def countStudents( students, sandwiches) -> int:
 # print(count_explorers([1, 1, 0, 0], [0, 1, 0, 1]))  Out: 3
 # print(count_explorers([1, 1, 1, 0, 0, 1], [1, 0, 0, 0, 1, 1])) Out: 0
 
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
 
 # Hackerrramk 
 # Rem dupes from sorterd array w O(1) space
@@ -126,7 +127,7 @@ def remove_duplicates(nums):
             
     return l
 
-
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
 # Intrsection of 2 arrays (2 ptr) 
 # easy done w set
 # 2 ptr didnt get 
