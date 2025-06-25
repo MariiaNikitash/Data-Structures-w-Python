@@ -69,8 +69,8 @@ brands_3 = [
 
 #----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
 # Problem 3: Fashion Trends
-# Time: O()
-# Space: O()
+# Time: O(nxm) if m is small then its constant 
+# Space: O(n)
 def find_trending_materials(brands):
     res = []
     dic = {}
@@ -99,6 +99,39 @@ brands_3 = [
 #print(find_trending_materials(brands)) # ['organic cotton', 'recycled polyester', 'bamboo']
 #print(find_trending_materials(brands_2)) # ['hemp', 'linen']
 #print(find_trending_materials(brands_3)) # ['recycled polyester']
+
+
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+# Problem 4: Fabric Pairing
+# Time: O()
+# Space: O(n)
+def find_best_fabric_pair(fabrics, budget):
+    fabrics.sort(key=lambda x: x[1])
+    l,r = 0, len(fabrics ) -1
+    best_pair = ()
+    closest_sum = 0
+    while l <r:
+        cost_sum = fabrics[l][1] + fabrics[r][1]
+        if cost_sum > closest_sum and cost_sum <= budget:
+            closest_sum = cost_sum
+            best_pair = (fabrics[l][0], fabrics[r][0])
+        if cost_sum > budget:
+            r-=1
+        else:
+            l+=1
+    return best_pair
+
+
+
+fabrics = [("Organic Cotton", 30), ("Recycled Polyester", 20), ("Bamboo", 25), ("Hemp", 15)]
+fabrics_2 = [("Linen", 50), ("Recycled Wool", 40), ("Tencel", 30), ("Organic Cotton", 60)]
+fabrics_3 = [("Linen", 40), ("Hemp", 35), ("Recycled Polyester", 25), ("Bamboo", 20)]
+
+print(find_best_fabric_pair(fabrics, 45)) #('Hemp', 'Organic Cotton')
+print(find_best_fabric_pair(fabrics_2, 70)) #('Tencel', 'Recycled Wool')
+print(find_best_fabric_pair(fabrics_3, 60)) # ('Bamboo', 'Linen')
+
+
 
 
 
