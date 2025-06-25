@@ -103,8 +103,8 @@ brands_3 = [
 
 #----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
 # Problem 4: Fabric Pairing
-# Time: O()
-# Space: O(n)
+# Time: O(nlogn)
+# Space: O(1)
 def find_best_fabric_pair(fabrics, budget):
     fabrics.sort(key=lambda x: x[1])
     l,r = 0, len(fabrics ) -1
@@ -127,12 +127,80 @@ fabrics = [("Organic Cotton", 30), ("Recycled Polyester", 20), ("Bamboo", 25), (
 fabrics_2 = [("Linen", 50), ("Recycled Wool", 40), ("Tencel", 30), ("Organic Cotton", 60)]
 fabrics_3 = [("Linen", 40), ("Hemp", 35), ("Recycled Polyester", 25), ("Bamboo", 20)]
 
-print(find_best_fabric_pair(fabrics, 45)) #('Hemp', 'Organic Cotton')
-print(find_best_fabric_pair(fabrics_2, 70)) #('Tencel', 'Recycled Wool')
-print(find_best_fabric_pair(fabrics_3, 60)) # ('Bamboo', 'Linen')
+#print(find_best_fabric_pair(fabrics, 45)) #('Hemp', 'Organic Cotton')
+#print(find_best_fabric_pair(fabrics_2, 70)) #('Tencel', 'Recycled Wool')
+#print(find_best_fabric_pair(fabrics_3, 60)) # ('Bamboo', 'Linen')
+
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+# Problem 5: Fabric Stacks
+# Time: O(nlogn)
+# Space: O(n)
+
+def organize_fabrics(fabrics):
+    fabrics.sort(key=lambda x: x[1], reverse=True)
+    res = []
+    for f in fabrics:
+        res.append(f[0])
+    return res
+
+fabrics = [("Organic Cotton", 8), ("Recycled Polyester", 6), ("Bamboo", 7), ("Hemp", 9)]
+fabrics_2 = [("Linen", 5), ("Recycled Wool", 9), ("Tencel", 7), ("Organic Cotton", 6)]
+fabrics_3 = [("Linen", 4), ("Hemp", 8), ("Recycled Polyester", 5), ("Bamboo", 7)]
+
+#print(organize_fabrics(fabrics))
+#print(organize_fabrics(fabrics_2))
+#print(organize_fabrics(fabrics_3))
+['Hemp', 'Organic Cotton', 'Bamboo', 'Recycled Polyester']
+['Recycled Wool', 'Tencel', 'Organic Cotton', 'Linen']
+['Hemp', 'Bamboo', 'Recycled Polyester', 'Linen']
+
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+# Problem 6:  Supply Chain
+# Time: O(nlogn)
+# Space: O(n)
+from collections import deque
+def process_supplies(supplies):
+    supplies.sort(key=lambda x: x[1], reverse=True)
+    res = []
+    q = deque(sup[0] for sup in supplies)
+    while q:
+        res.append(q.popleft())
+    return res
+
+supplies = [("Organic Cotton", 3), ("Recycled Polyester", 2), ("Bamboo", 4), ("Hemp", 1)]
+supplies_2 = [("Linen", 2), ("Recycled Wool", 5), ("Tencel", 3), ("Organic Cotton", 4)]
+supplies_3 = [("Linen", 3), ("Hemp", 2), ("Recycled Polyester", 5), ("Bamboo", 1)]
+
+#print(process_supplies(supplies))
+#print(process_supplies(supplies_2))
+#print(process_supplies(supplies_3))
+
+['Bamboo', 'Organic Cotton', 'Recycled Polyester', 'Hemp']
+['Recycled Wool', 'Organic Cotton', 'Tencel', 'Linen']
+['Recycled Polyester', 'Linen', 'Hemp', 'Bamboo']
+
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+# Problem 7:  Calculate Fabric Waste
+# Time: O()
+# Space: O()
+
+def calculate_fabric_waste(items, fabric_rolls):
+    res = 0
+    for i in range(len(items)):
+        _, item_len = items[i]
+        roll_len = fabric_rolls[i]
+        waste = roll_len - item_len
+        res += waste
+    return res
 
 
 
-
-
-
+items = [("T-Shirt", 2), ("Pants", 3), ("Jacket", 5)]
+fabric_rolls = [5, 5, 5]
+items_2 = [("Dress", 4), ("Skirt", 3), ("Blouse", 2)]
+fabric_rolls = [4, 4, 4]
+items_3 = [("Jacket", 6), ("Shirt", 2), ("Shorts", 3)]
+fabric_rolls = [7, 5, 5]
+#print(calculate_fabric_waste(items, fabric_rolls)) 
+#print(calculate_fabric_waste(items_2, fabric_rolls)) 
+#print(calculate_fabric_waste(items_3, fabric_rolls)) 
