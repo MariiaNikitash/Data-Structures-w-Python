@@ -194,3 +194,7 @@ def beauty_sum(collection):
             total_beauty += (max_freq - min_freq)
     
     return total_beauty
+
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+
+# Problem 6

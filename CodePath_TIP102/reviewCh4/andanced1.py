@@ -181,8 +181,8 @@ supplies_3 = [("Linen", 3), ("Hemp", 2), ("Recycled Polyester", 5), ("Bamboo", 1
 
 #----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
 # Problem 7:  Calculate Fabric Waste
-# Time: O()
-# Space: O()
+# Time: O(n)
+# Space: O(1)
 
 def calculate_fabric_waste(items, fabric_rolls):
     res = 0
@@ -204,3 +204,27 @@ fabric_rolls = [7, 5, 5]
 #print(calculate_fabric_waste(items, fabric_rolls)) 
 #print(calculate_fabric_waste(items_2, fabric_rolls)) 
 #print(calculate_fabric_waste(items_3, fabric_rolls)) 
+
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+# Problem 8:  Fabric Roll Organizer
+# Time: O(n)
+# Space: O(1)
+def organize_fabric_rolls(fabric_rolls):
+    res = []
+    fabric_rolls.sort(key=lambda x: x)
+    i = 0
+    while i+1 < len(fabric_rolls):
+        res.append((fabric_rolls[i], fabric_rolls[i+1]))
+        i+=2
+    if i < len(fabric_rolls):
+        res.append(fabric_rolls[i])
+    return res
+fabric_rolls = [15, 10, 25, 30, 22]
+fabric_rolls_2 = [5, 8, 10, 7, 12, 14]
+fabric_rolls_3 = [40, 10, 25, 15, 30]
+
+print(organize_fabric_rolls(fabric_rolls)) #[(10, 15), (22, 25), 30]
+print(organize_fabric_rolls(fabric_rolls_2)) #[(5, 7), (8, 10), (12, 14)]
+print(organize_fabric_rolls(fabric_rolls_3))# [(10, 15), (25, 30), 40]
+
+

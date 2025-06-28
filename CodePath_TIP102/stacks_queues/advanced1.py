@@ -23,8 +23,37 @@ def arrange_guest_arrival_order(arrival_pattern):
       guest_order += str(stack.pop())
 
    return ''.join(guest_order)
-print(arrange_guest_arrival_order("IIIDIDDD"))  
-print(arrange_guest_arrival_order("DDD"))  
+#print(arrange_guest_arrival_order("IIIDIDDD"))  
+#print(arrange_guest_arrival_order("DDD"))  
 
-#123549876
-#4321
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+# Problem 2
+#Leetcode Medium: deckRevealedIncreasing
+# Reveal Cards In Increasing Order 
+from collections import deque
+def deckRevealedIncreasing(deck):
+   deck.sort()
+   res = [0] * len(deck)
+   q = deque(range(len(deck)))
+
+   for card in deck:
+      inx = q.popleft()
+      res[inx] = card
+
+      if q:
+         q.append(q.popleft())
+   return res
+print(deckRevealedIncreasing([17,13,11,2,3,5,7])) 
+print(deckRevealedIncreasing([1,1000])) 
+
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+# Problem 3 
+
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+# Problem 4 
+
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+# Problem 5
+
+#----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
+# Problem 6
