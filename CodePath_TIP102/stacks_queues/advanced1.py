@@ -84,10 +84,31 @@ def dutch_national_flag(nums):
 
 #----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
 # Problem 4 
+def rearrange_guests(guests):
+   neg = []
+   pos = []
+   for g in guests:
+      if g < 0:
+         neg.append(g)
+      else:
+         pos.append(g)
+      
+   res = []
+   for i in range(len(neg)):
+      res.append(pos[i])
+      res.append(neg[i])
+   return res
+
+
+print(rearrange_guests([3,1,-2,-5,2,-4]))  # [3,-2,1,-5,2,-4]
+print(rearrange_guests([-1,1]))  # [1,-1]
+
 
 #----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
 # Problem 5
-
+# LC 1541 Medium: Minimum Insertions to Balance a Parentheses String
+def minInsertions(s):
+   
 #----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*----*
 # Problem 6
 
