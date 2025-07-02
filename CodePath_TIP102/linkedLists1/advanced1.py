@@ -1,13 +1,17 @@
 # OPP and LL 
 class Villager:
-    def __init__(self, name, species, catchphrase):
+    def __init__(self, name, species, personality, catchphrase, neighbor=None):
         self.name = name
         self.species = species
+        self.personality = personality
         self.catchphrase = catchphrase
-        #self.personality = personality
-        #self.neighbor = neighbor
+        self.neighbor = neighbor
         self.furniture = []
-
+#apollo = Villager("Apollo", "Eagle", "pah")
+#print(apollo.name)
+#print(apollo.species) 
+#print(apollo.catchphrase)
+#print(apollo.furniture)
 
     def add_item(self, item_name):
         if item_name in ["acoustic guitar", "ironwood kitchenette", "rattan armchair", "kotatsu", "cacao tree"]:
@@ -15,17 +19,36 @@ class Villager:
 
 # 3, 4
 def of_personality_type(townies, personality_type):
-    pass
+    res = []
+    for v in townies:
+        if v.personality == personality_type:
+            res.append(v.name)
+    return res
+isabelle = Villager("Isabelle", "Dog", "Normal", "what's up?")
+bob = Villager("Bob", "Cat", "Lazy", "pthhhpth")
+stitches = Villager("Stitches", "Cub", "Lazy", "stuffin'")
+
+#print(of_personality_type([isabelle, bob, stitches], "Lazy"))  # ['Bob', 'Stitches']
+#print(of_personality_type([isabelle, bob, stitches], "Cranky")) # []
+
 
 def message_received(start_villager, target_villager):
-    pass
+    current = start_villager
+    while current is not None:
+        if current == target_villager:
+            return True
+        current = current.neighbor 
+    return False
 
+isabelle = Villager("Isabelle", "Dog", "Normal", "what's up?")
+tom_nook = Villager("Tom Nook", "Raccoon", "Cranky", "yes, yes")
+kk_slider = Villager("K.K. Slider", "Dog", "Lazy", "dig it")
+isabelle.neighbor = tom_nook
+tom_nook.neighbor = kk_slider
 
-apollo = Villager("Apollo", "Eagle", "pah")
-#print(apollo.name)
-#print(apollo.species) 
-#print(apollo.catchphrase)
-#print(apollo.furniture)
+#print(message_received(isabelle, kk_slider))
+#print(message_received(kk_slider, isabelle))
+
 
 # P 5
 class Node:
@@ -49,8 +72,10 @@ kk_slider.next = harriet
 harriet.next = saharah
 saharah.next = isabelle
 
-# Add code here to link the above nodes
 #print(print_linked_list(kk_slider))
+#===========================
+
+
 
 class Node:
     def __init__(self, fish_name, next=None):
@@ -65,15 +90,18 @@ def print_linked_list(head):
         current = current.next
 
 def catch_fish(head):
+    if not head:
+        print(f"Aw! Better luck next time!")
+        return None
     current = head
+    print(f"I cought a {head.fish_name} ")
     while current:
-        print(f"I cought a {head.fish_name} ")
+        current = current.next
+    return head.next
 
 
 fish_list = Node("Carp", Node("Dace", Node("Cherry Salmon")))
 empty_list = None
-
-
 
 #print_linked_list(fish_list)
 #print_linked_list(catch_fish(fish_list))
@@ -87,15 +115,23 @@ def print_linked_list(head):
         current = current.next
 
 def fish_chances(head, fish_name):
-    pass
+    count = 0
+    cur = head
+    goal = 0
+    while cur:
+        count+=1
+        if cur.fish_name == fish_name:
+            goal +=1
+        cur = cur.next
+    if count == 0:
+        return 0.0
+    res = goal / count
+    return round(res,2)
 
+fish_list = Node("Carp", Node("Dace", Node("Cherry Salmon")))
+#print(fish_chances(fish_list, "Dace"))
+#print(fish_chances(fish_list, "Rainbow Trout"))
 
-
-
-
-
-
-# For testing
 def print_linked_list(head):
     current = head
     while current:
@@ -103,10 +139,12 @@ def print_linked_list(head):
         current = current.next
 
 def restock(head, new_fish):
+    if not head:
+        return Node(new_fish)
     current = head
-    while current:
+    while current.next:
         current = current.next
-    current.next = new_fish
+    current.next = Node(new_fish)
 
     return head
 fish_list = Node("Carp", Node("Dace", Node("Cherry Salmon")))
