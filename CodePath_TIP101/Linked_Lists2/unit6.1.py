@@ -33,7 +33,7 @@ def count_element(head, val):
 	while cur:
 		if cur.value == val:
 			count+=1
-			cur = cur.next
+		cur = cur.next
 	return count
 
 
