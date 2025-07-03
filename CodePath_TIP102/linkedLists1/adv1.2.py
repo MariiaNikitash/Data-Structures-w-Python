@@ -96,7 +96,7 @@ daisy.next = peach
 peach.next = luigi
 luigi.next = mario
 
-print_linked_list(daisy)
+#print_linked_list(daisy)
 #Daisy -> Peach -> Luigi -> Mario
 
 class Node:
@@ -123,9 +123,9 @@ def count_racers(head):
 racers1 = Node("Mario", Node("Peach", Node("Luigi", Node("Daisy"))))
 racers2 = Node("Mario")
 
-print(count_racers(racers1)) #4
-print(count_racers(racers2)) #1
-print(count_racers(None)) #0
+#print(count_racers(racers1)) #4
+#print(count_racers(racers2)) #1
+#print(count_racers(None)) #0
 
 
 class Node:
@@ -151,6 +151,35 @@ def last_place(head):
 racers1 = Node("Mario", Node("Peach", Node("Luigi", Node("Daisy"))))
 racers2 = Node("Mario")
 
-print(last_place(racers1)) # Daisy
-print(last_place(racers2)) # Mario
-print(last_place(None)) # None
+#print(last_place(racers1)) # Daisy
+#print(last_place(racers2)) # Mario
+#print(last_place(None)) # None
+
+# For testing
+def print_linked_list(head):
+    current = head
+    while current:
+        print(current.player_name, end=" -> " if current.next else "\n")
+        current = current.next
+
+def increment_rank(head, target):
+    if not head or target <= 1:
+        return head
+    index = 1
+    cur = head
+    prev = None
+    while index < target:
+        prev = cur
+        cur = cur.next
+        index+=1
+    
+    prev.player_name, cur.player_name = cur.player_name, prev.player_name
+
+    return head
+    
+racers1 = Node("Mario", Node("Peach", Node("Luigi", Node("Daisy"))))
+racers2 = Node("Mario", Node("Luigi"))
+
+print_linked_list(increment_rank(racers1, 3))
+print_linked_list(increment_rank(racers2, 1)) 
+print_linked_list(increment_rank(None, 1))
